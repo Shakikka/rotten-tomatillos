@@ -5,7 +5,7 @@ const SelectedMovie = ({ id, goBack }) => {
     const foundMovie = movieData.movies.find(movie => movie.id === id)
     return(
         <article>
-            <IoIosArrowDropleft onClick={ () => goBack() }/>
+            <IoIosArrowDropleft onClick={ () => goBack() } role="button"/>
             <img src={foundMovie.backdrop_path} alt={foundMovie.title + 'image'}/>
             <p>{foundMovie.title}</p>
             <p>{foundMovie.average_rating}</p>
