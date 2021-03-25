@@ -1,10 +1,11 @@
 import movieData from '../movie-data'
+import { IoIosArrowDropleft } from "react-icons/io";
 
-const SelectedMovie = ({id}) => {
+const SelectedMovie = ({ id, goBack }) => {
     const foundMovie = movieData.movies.find(movie => movie.id === id)
     return(
         <article>
-            <button>Back</button>
+            <IoIosArrowDropleft onClick={ () => goBack() }/>
             <img src={foundMovie.backdrop_path} alt={foundMovie.title + 'image'}/>
             <p>{foundMovie.title}</p>
             <p>{foundMovie.average_rating}</p>
