@@ -1,13 +1,8 @@
-import React from 'react';
 import Movie from '../MovieCard/MovieCard';
 import './Movies.css';
 
-const MovieContainer = props => {
-  const enlargeCard = (id) => {
-    const foundMovie = props.movies.find(movie => movie.id === id)
-    console.log('foundMovie', foundMovie)
-  }
-  const movieCards = props.movies.map(movie => {
+const MovieContainer = ({enlargeCard, movies, currentMovie})=> {
+  const movieCards = movies.map(movie => {
     return (
       <Movie
         id={movie.id}
@@ -24,7 +19,7 @@ const MovieContainer = props => {
 
   return (
     <div className="posters">
-      {movieCards}
+      {currentMovie.active ? movieCards : selectedMovie}
     </div>
 
   )

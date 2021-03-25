@@ -8,16 +8,23 @@ class App extends Component {
     super();
     this.state = {
       movies: movieData.movies,
-      currentMovie: {}
+      currentMovie: {active: false, id: null}
     }
-
   }
+
+  enlargeCard = (id) => {
+    const foundMovie = this.state.movies.find(movie => movie.id === id)
+    this.setState({ currentMovie: {active: true, id: id}});
+    console.log(foundMovie);
+  }
+
   render() {
     return (
       <div className="App">
         <header className="App-header">Rotten Tomatillos
         </header>
-        <MovieContainer movies={this.state.movies} />
+        <MovieContainer movies={this.state.movies} currentMovie={this.state.currentMovie} enlargeCard={this.enlargeCard}/>
+      
       </div>
     );
   }
