@@ -1,26 +1,29 @@
-import React from 'react';
 import Movie from '../MovieCard/MovieCard';
+import SelectedMovie from '../SelectedMovie/SelectedMovie';
 import './Movies.css';
 
-const MovieContainer = props => {
-  console.log(props)
-  const movieCards = props.movies.movies.map(movie => {
+const MovieContainer = ({enlargeCard, movies, currentMovie, goBack})=> {
+  const movieCards = movies.map(movie => {
     return (
       <Movie
-      id = {movie.id}
-      key = {movie.id}
-      poster_path = {movie.poster_path}
-      backdrop_path = {movie.backdrop_path}
-      title = {movie.title}
-      average_rating = {movie.average_rating}
-      release_date = {movie.release_date}
+        id={movie.id}
+        key={movie.id}
+        poster_path={movie.poster_path}
+        backdrop_path={movie.backdrop_path}
+        title={movie.title}
+        average_rating={movie.average_rating}
+        release_date={movie.release_date}
+        enlargeCard={enlargeCard}
       />
     )
   })
 
+  const selectedMovie = <SelectedMovie id={currentMovie.id} goBack={goBack}/>
   return (
-    <div className="posters">{movieCards}</div>
-    
-    )
+    <div className="posters">
+      {currentMovie.active ? selectedMovie : movieCards }
+    </div>
+
+  )
 }
 export default MovieContainer;
