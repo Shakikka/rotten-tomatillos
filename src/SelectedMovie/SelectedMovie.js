@@ -1,7 +1,6 @@
 import { IoIosArrowDropleft } from "react-icons/io";
 
 const SelectedMovie = ({ id, goBack, foundMovie }) => {
-    // const foundMovie = movies.find(movie => movie.id === id)
     return(
         <article>
             <IoIosArrowDropleft onClick={ () => goBack() } role="button"/>
