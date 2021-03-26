@@ -1,15 +1,21 @@
 import React, { Component } from 'react';
 import './App.css';
-import movieData from './movie-data';
+import getMovies from './apiCalls.js'
+// import movieData from './movie-data';
 import MovieContainer from './Movies/Movies';
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      movies: movieData.movies,
+      movies: [],
       currentMovie: {active: false, id: null}
     }
+  }
+
+  componentDidMount() {
+    getMovies()
+    .then(movies => this.setState({ movies: movies.movies }))
   }
 
   goBack = () => {
