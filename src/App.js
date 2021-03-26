@@ -1,15 +1,21 @@
 import React, { Component } from 'react';
 import './App.css';
-import movieData from './movie-data';
+import { getMovies, getMovie } from './apiCalls.js'
 import MovieContainer from './Movies/Movies';
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      movies: movieData.movies,
-      currentMovie: {active: false, id: null}
+      movies: [],
+      currentMovie: {active: false, id: null, film: {}}
     }
+  }
+
+  componentDidMount() {
+    getMovies()
+    .then(movies => this.setState({ movies: movies.movies }))
+    .catch(error => alert(error.message))
   }
 
   goBack = () => {
@@ -19,8 +25,9 @@ class App extends Component {
 
   enlargeCard = (id) => {
     const foundMovie = this.state.movies.find(movie => movie.id === id)
-    this.setState({ currentMovie: {active: true, id: id}});
-    console.log(foundMovie);
+    getMovie(foundMovie.id)
+    .then(movie => this.setState({ currentMovie : {active: true, id: (movie.movie.id), film: movie.movie}}))
+    .catch(error => alert(error.message))
   }
 
   render() {

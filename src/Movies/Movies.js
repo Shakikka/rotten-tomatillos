@@ -1,5 +1,5 @@
 import Movie from '../MovieCard/MovieCard';
-import SelectedMovie from '../SelectedMovie/SelectedMovie';
+import SelectedMovie from '../SelectedMovie/SelectedMovie.js';
 import './Movies.css';
 
 const MovieContainer = ({enlargeCard, movies, currentMovie, goBack})=> {
@@ -18,7 +18,7 @@ const MovieContainer = ({enlargeCard, movies, currentMovie, goBack})=> {
     )
   })
 
-  const selectedMovie = <SelectedMovie id={currentMovie.id} goBack={goBack}/>
+  const selectedMovie = <SelectedMovie id={currentMovie.id} goBack={goBack} foundMovie={currentMovie.film}/>
   return (
     <div className="posters">
       {currentMovie.active ? selectedMovie : movieCards }
