@@ -15,6 +15,7 @@ class App extends Component {
   componentDidMount() {
     getMovies()
     .then(movies => this.setState({ movies: movies.movies }))
+    .catch(error => alert(error.message))
   }
 
   goBack = () => {
@@ -26,6 +27,7 @@ class App extends Component {
     const foundMovie = this.state.movies.find(movie => movie.id === id)
     getMovie(foundMovie.id)
     .then(movie => this.setState({ currentMovie : {active: true, id: (movie.movie.id), film: movie.movie}}))
+    .catch(error => alert(error.message))
   }
 
   render() {
