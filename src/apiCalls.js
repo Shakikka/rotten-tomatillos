@@ -1,8 +1,22 @@
 const baseURL = 'https://rancid-tomatillos.herokuapp.com/api/v2/movies';
 
-const getMovies = () => {
+export const getMovies = () => {
   return fetch(baseURL)
-  .then(response => response.json())
+  .then(checkForError)
+  .catch(error => alert(error.message))
 }
 
-export default getMovies
+export const getMovie = (id) => {
+
+  return fetch(baseURL + "/" + String(id))
+  .then(checkForError)
+  .catch(error => console.log(error.message))
+}
+
+export const checkForError = (response) => {
+  if (!response.ok) {
+    throw new Error('Run for your life!');
+  } else {
+    return response.json();
+  }
+}
