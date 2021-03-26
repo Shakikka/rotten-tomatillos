@@ -1,4 +1,5 @@
-import movieData from '../movie-data'
+import movieData from '../movie-data';
+import apiCalls from '../apiCalls';
 import { IoIosArrowDropleft } from "react-icons/io";
 
 const SelectedMovie = ({ id, goBack }) => {

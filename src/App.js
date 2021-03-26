@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import getMovies from './apiCalls.js'
+import { getMovies } from './apiCalls.js'
 // import movieData from './movie-data';
 import MovieContainer from './Movies/Movies';
 
