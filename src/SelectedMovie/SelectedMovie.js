@@ -10,6 +10,17 @@ const SelectedMovie = ({ id, goBack, movies }) => {
             <p>{foundMovie.average_rating}</p>
             <p>{foundMovie.release_date}</p>
             <img src={foundMovie.poster_path} alt={foundMovie.title + 'poster'}/>
+            <div className="video-responsive">
+                <iframe
+                    width="853"
+                    height="480"
+                    src={`https://www.youtube.com/embed/IpSK2CsKULg`}
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                    title="Embedded youtube"
+                />
+            </div>
         </article>
     )
 }
