@@ -11,6 +11,11 @@ export const getMovie = (id) => {
   .then(checkForError)
 }
 
+export const getTrailer = (id) => {
+  return fetch(baseURL + "/" + String(id) + '/videos')
+  .then(checkForError)
+}
+
 export const checkForError = (response) => {
   if (!response.ok) {
     throw new Error('Run for your life!');
