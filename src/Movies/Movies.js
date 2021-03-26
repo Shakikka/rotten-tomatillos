@@ -2,7 +2,7 @@ import Movie from '../MovieCard/MovieCard';
 import SelectedMovie from '../SelectedMovie/SelectedMovie.js';
 import './Movies.css';
 
-const MovieContainer = ({enlargeCard, movies, currentMovie, goBack})=> {
+const MovieContainer = ({enlargeCard, movies, currentMovie, goBack, currentVideos})=> {
   const movieCards = movies.map(movie => {
     return (
       <Movie
@@ -18,11 +18,13 @@ const MovieContainer = ({enlargeCard, movies, currentMovie, goBack})=> {
     )
   })
 
-  const selectedMovie = <SelectedMovie id={currentMovie.id} goBack={goBack} foundMovie={currentMovie.film}/>
+  const selectedMovie = <SelectedMovie id={currentMovie.id} goBack={goBack} 
+  foundMovie={currentMovie.film} currentVideos={currentVideos}/>
   return (
-    <div className="posters">
-      {currentMovie.active ? selectedMovie : movieCards }
-    </div>
+    <section className="movie-container">
+      {!currentMovie.active && <h1>New Movies</h1>}
+      {currentMovie.active ? selectedMovie : <div className="posters">{movieCards}</div>}
+    </section>
 
   )
 }
