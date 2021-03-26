@@ -18,7 +18,7 @@ const MovieContainer = ({enlargeCard, movies, currentMovie, goBack})=> {
     )
   })
 
-  const selectedMovie = <SelectedMovie id={currentMovie.id} goBack={goBack} movies={movies}/>
+  const selectedMovie = <SelectedMovie id={currentMovie.id} goBack={goBack} foundMovie={currentMovie.film}/>
   return (
     <div className="posters">
       {currentMovie.active ? selectedMovie : movieCards }
