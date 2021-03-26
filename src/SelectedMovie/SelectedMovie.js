@@ -1,9 +1,7 @@
-import movieData from '../movie-data';
-import apiCalls from '../apiCalls';
 import { IoIosArrowDropleft } from "react-icons/io";
 
-const SelectedMovie = ({ id, goBack }) => {
-    const foundMovie = movieData.movies.find(movie => movie.id === id)
+const SelectedMovie = ({ id, goBack, movies }) => {
+    const foundMovie = movies.find(movie => movie.id === id)
     return(
         <article>
             <IoIosArrowDropleft onClick={ () => goBack() } role="button"/>
