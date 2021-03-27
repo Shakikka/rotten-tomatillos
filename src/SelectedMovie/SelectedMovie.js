@@ -5,7 +5,8 @@ const SelectedMovie = ({ goBack, foundMovie, currentVideos }) => {
     const style = {
         backgroundImage: `url(${foundMovie.backdrop_path})`
     }
-    let videoKey = currentVideos[Math.floor(Math.random() * currentVideos.length)].key
+    let videoKey = currentVideos[Math.floor(Math.random() * currentVideos.length)]
+    if (videoKey) videoKey = videoKey.key;
     return(
         <article className="selected-movie" style={style}>
             <article className="movie-info">
