@@ -32,3 +32,15 @@
     transform: rotate(360deg);
   }
 }
+
+@media screen and (max-width: 1000px) {
+  .App-header {
+    font-size: 7vh;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .App-header {
+    font-size: 5vh;
+  }
+}
