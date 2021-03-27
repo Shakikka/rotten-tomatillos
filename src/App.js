@@ -3,7 +3,6 @@ import './App.css';
 import { getMovies, getMovie, getTrailer } from './apiCalls.js'
 import MovieContainer from './Movies/Movies';
 import { MdMovie } from "react-icons/md"
-import { BrowserRouter as Router } from 'react-router-dom';
 
 
 class App extends Component {
@@ -41,7 +40,6 @@ class App extends Component {
 
   render() {
     return (
-      <Router>
         <div className="App">
           <header className="App-header">Rotten Tomatillos
           <MdMovie className="movie-logo"/>
@@ -50,7 +48,6 @@ class App extends Component {
           enlargeCard={this.enlargeCard} goBack={this.goBack}
           currentVideos={this.state.currentVideos}/>
         </div>
-      </Router>
     );
   }
 }
