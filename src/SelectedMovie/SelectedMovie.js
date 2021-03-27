@@ -1,5 +1,6 @@
 import { IoIosArrowDropleft } from "react-icons/io";
 import './SelectedMovie.css'
+import { Link } from 'react-router-dom';
 
 const SelectedMovie = ({ goBack, foundMovie, currentVideos }) => {
     const style = {
@@ -10,7 +11,9 @@ const SelectedMovie = ({ goBack, foundMovie, currentVideos }) => {
     return(
         <article className="selected-movie" style={style}>
             <article className="movie-info">
-            <IoIosArrowDropleft onClick={ () => goBack() } role="button" className="go-back"/>
+                <Link to='/'>
+                    <IoIosArrowDropleft onClick={ () => goBack() } role="button" className="go-back"/>
+                </Link>
                 <h1 className="movie-title">{foundMovie.title}</h1>
                 <i>{foundMovie.tagline}</i>
                 <h2>{'Overview: ' + foundMovie.overview}</h2>

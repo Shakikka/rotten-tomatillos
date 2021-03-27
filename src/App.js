@@ -4,6 +4,7 @@ import { getMovies, getMovie, getTrailer } from './apiCalls.js'
 import MovieContainer from './Movies/Movies';
 import { MdMovie } from "react-icons/md"
 
+
 class App extends Component {
   constructor() {
     super();
@@ -22,7 +23,7 @@ class App extends Component {
 
   goBack = () => {
     this.setState({
-      currentMovie: { active: false, id: null } })
+      currentMovie: { active: false, id: null , film: {}} })
   }
 
   enlargeCard = (id) => {
@@ -32,7 +33,6 @@ class App extends Component {
     .catch(error => alert(error.message))
     getTrailer(foundMovie.id)
     .then(trailer => {
-      console.log(trailer.videos[0])
       return this.setState({ currentVideos : trailer.videos})
     })
     .catch(error => alert(error.message))
@@ -40,14 +40,14 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <header className="App-header">Rotten Tomatillos
-        <MdMovie className="movie-logo"/>
-        </header>
-        <MovieContainer movies={this.state.movies} currentMovie={this.state.currentMovie}
-         enlargeCard={this.enlargeCard} goBack={this.goBack}
-         currentVideos={this.state.currentVideos}/>
-      </div>
+        <div className="App">
+          <header className="App-header">Rotten Tomatillos
+          <MdMovie className="movie-logo"/>
+          </header>
+          <MovieContainer movies={this.state.movies} currentMovie={this.state.currentMovie}
+          enlargeCard={this.enlargeCard} goBack={this.goBack}
+          currentVideos={this.state.currentVideos}/>
+        </div>
     );
   }
 }
