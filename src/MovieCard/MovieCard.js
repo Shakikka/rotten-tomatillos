@@ -1,7 +1,7 @@
 import React from 'react';
 import './MovieCard.css';
 
-const Movie = ({ id, poster_path, backdrop_path, title, average_rating, release_date, enlargeCard }) => {
+const Movie = ({ id, poster_path, title, enlargeCard }) => {
   return (
     <article className="movie-card" onClick={() => enlargeCard(id)}>
       <img src={poster_path} alt={`${title} poster`}></img>
