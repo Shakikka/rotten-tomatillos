@@ -3,7 +3,7 @@ import './MovieCard.css';
 
 const Movie = ({ id, poster_path, title, enlargeCard }) => {
   return (
-    <article className="movie-card" onClick={() => enlargeCard(id)}>
+    <article className="movie-card">
       <img src={poster_path} alt={`${title} poster`}></img>
     </article>
   )
