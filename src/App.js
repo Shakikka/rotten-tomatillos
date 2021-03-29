@@ -27,15 +27,14 @@ class App extends Component {
   }
 
   enlargeCard = (id) => {
-    const foundMovie = this.state.movies.find(movie => movie.id === id)
-    getMovie(foundMovie.id)
-    .then(movie => this.setState({ currentMovie : {active: true, id: (movie.movie.id), film: movie.movie}}))
-    .catch(error => alert(error.message))
-    getTrailer(foundMovie.id)
-    .then(trailer => {
-      return this.setState({ currentVideos : trailer.videos})
-    })
-    .catch(error => alert(error.message))
+      getMovie(id)
+      .then(movie => this.setState({ currentMovie : {active: true, id: (movie.movie.id), film: movie.movie}}))
+      .catch(error => alert(error.message))
+      getTrailer(id)
+      .then(trailer => {
+        return this.setState({ currentVideos : trailer.videos})
+      })
+      .catch(error => alert(error.message))
   }
 
   render() {
