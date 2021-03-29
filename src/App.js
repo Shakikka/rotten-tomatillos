@@ -41,7 +41,7 @@ class App extends Component {
     return (
         <div className="App">
           <header className="App-header">Rotten Tomatillos
-          <MdMovie className="movie-logo"/>
+            <MdMovie className="movie-logo"/>
           </header>
           <MovieContainer movies={this.state.movies} currentMovie={this.state.currentMovie}
           enlargeCard={this.enlargeCard} goBack={this.goBack}
