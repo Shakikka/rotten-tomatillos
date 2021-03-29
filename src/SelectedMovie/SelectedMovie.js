@@ -23,7 +23,7 @@ const SelectedMovie = ({ goBack, foundMovie, currentVideos }) => {
                 <p>{'Genres: ' + foundMovie.genres}</p>
                 <p>{'Revenue: $' + foundMovie.revenue}</p>
                 <iframe
-                    src={`https://www.youtube.com/embed/${videoKey}`}
+                    src={`https://www.youtube-nocookie.com/embed/${videoKey}`}
                     frameBorder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen
