@@ -6,7 +6,7 @@ import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
 const MovieContainer = ({enlargeCard, movies, currentMovie, goBack, currentVideos})=> {
   const movieCards = movies.map(movie => {
     return (
-      <Link to={`/${movie.title}`} key={movie.id}>
+      <Link to={`/${movie.id}`} key={movie.id}>
         <Movie
           id={movie.id}
           poster_path={movie.poster_path}
@@ -28,8 +28,8 @@ const MovieContainer = ({enlargeCard, movies, currentMovie, goBack, currentVideo
       <Route
         render={({ location }) => (
           <Switch location={location} key={location.pathname}>
-            <Route exact path='/' children={() => <section className="movie-container"><div className="posters">{movieCards}</div></section>}/>
-            <Route exact path="/:title" children={() => <section className="movie-container">{selectedMovie}</section>}/>
+            <Route exact path='/' children={() => <section className="movie-container">New Movies<div className="posters">{movieCards}</div></section>}/>
+            <Route exact path="/:id" children={() => <section className="movie-container">{selectedMovie}</section>}/>
           </Switch>
         )}>
       </Route>
