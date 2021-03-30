@@ -2,6 +2,7 @@ import Movie from '../MovieCard/MovieCard';
 import SelectedMovie from '../SelectedMovie/SelectedMovie.js';
 import './Movies.css';
 import { Link, Route, Switch } from 'react-router-dom';
+// import { pulse } from 'react-animations';
 
 const MovieContainer = ({enlargeCard, movies, currentMovie, goBack, currentVideos}) => {
   const movieCards = (<div className="posters">{
