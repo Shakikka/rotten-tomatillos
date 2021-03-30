@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import './App.css';
 import { getMovies, getMovie, getTrailer } from './apiCalls.js'
 import MovieContainer from './Movies/Movies';
-import { MdMovie } from "react-icons/md"
+import { MdMovie } from "react-icons/md";
+import { RiMovie2Line } from 'react-icons/ri';
+import { GiFilmProjector } from 'react-icons/gi';
 
 
 class App extends Component {
@@ -40,8 +42,9 @@ class App extends Component {
   render() {
     return (
         <div className="App">
-          <header className="App-header">Rotten Tomatillos
-            <MdMovie className="movie-logo"/>
+        <header className="App-header">Rotten T<span className="App-logo">🍅</span>matillos
+            <GiFilmProjector className="movie-logo"/>
+            <RiMovie2Line className="movie-logo App-logo"/>
           </header>
           <MovieContainer movies={this.state.movies} currentMovie={this.state.currentMovie}
           enlargeCard={this.enlargeCard} goBack={this.goBack}
