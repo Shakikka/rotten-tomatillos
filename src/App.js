@@ -43,11 +43,11 @@ class App extends Component {
   render() {
     return (
         <div className="App">
-        {/* <Example /> */}
-        <header className="App-header">Rotten T<span className="App-logo">🍅</span>matillos
+        <Example />
+        {/* <header className="App-header">Rotten T<span className="App-logo">🍅</span>matillos
             <GiFilmProjector className="movie-logo"/>
             <RiMovie2Line className="movie-logo App-logo"/>
-          </header>
+          </header> */}
           <MovieContainer movies={this.state.movies} currentMovie={this.state.currentMovie}
           enlargeCard={this.enlargeCard} goBack={this.goBack}
           currentVideos={this.state.currentVideos}/>

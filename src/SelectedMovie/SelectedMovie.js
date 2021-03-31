@@ -12,7 +12,7 @@ const SelectedMovie = ({ goBack, foundMovie, currentVideos }) => {
         <article className="selected-movie" style={style}>
             <article className="movie-info">
                 <Link to='/'>
-                    <IoIosArrowDropleft onClick={ () => goBack() } role="button" className="go-back"/>
+                    <IoIosArrowDropleft role="button" className="go-back"/>
                 </Link>
                 <h1 className="movie-title">{foundMovie.title}</h1>
                 <i>{foundMovie.tagline}</i>
