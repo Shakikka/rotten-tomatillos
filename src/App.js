@@ -45,7 +45,7 @@ class App extends Component {
     return (
         <div className="App">
         {/* <Example /> */}
-        <header className="App-header">Rotten T<span className="App-logo">🍅</span>matillos
+        <header className="App-header">Rotten T🍅matillos
             <GiFilmProjector className="movie-logo"/>
             <RiMovie2Line className="movie-logo App-logo"/>
           </header>

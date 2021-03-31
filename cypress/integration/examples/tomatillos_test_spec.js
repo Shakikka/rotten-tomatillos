@@ -1,11 +1,16 @@
 beforeEach(() => {
-    cy.visit('http://localhost:3000');
 });
 
 describe('Homepage', () => {
     it('Should be able to visit the page and render the correct elements', () => {
-        cy.contains('Rotten Tomatillos')
+        cy.visit('http://localhost:3000');
+        cy.contains('Rotten T🍅matillos')
         cy.get('section[class=movie-container]')
+    });
+
+    it('should show all movies from API on load', () => {
+        cy.intercept('https://rancid-tomatillos.herokuapp.com/api/v2/movies', {fixture: 'movie-data.js'})
+        cy.visit('http://localhost:3000');
     });
 });
 
@@ -31,5 +36,26 @@ describe('SelectedMovie', () => {
     });
 
 
+    it('should enlarge a movie with API information', () => {
 
+    });
+
+    it('should show trailer after loading singular movie page', () => {
+
+    });
+
+});
+
+describe('Sad Paths for Network Requests', () => {
+    it('should show an error message when all movies don\'t load', () => {
+
+    });
+
+    it('should show an error message when singular movie isn\'t available', () => {
+
+    });
+
+    it( 'should show an error message when video trailer isn\'t available', () => {
+
+    });
 });
