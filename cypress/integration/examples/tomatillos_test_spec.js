@@ -4,17 +4,25 @@ describe('Homepage', () => {
     beforeEach(() => {
         cy.visit('http://localhost:3000');
     });
-
+    
     it('Should be able to visit the page and render the correct elements', () => {
         cy.contains('Rotten T🍅matillos')
         cy.get('section[class=movie-container]')
     });
-
+    
     it('should show all movies from API on load', () => {
         cy.fixture('movie-data.json').then((movieData) => {
             cy.intercept('https://rancid-tomatillos.herokuapp.com/api/v2/movies', {movies: movieData});
         })
         cy.visit('http://localhost:3000');
+    });
+    
+    it('should show an error message when all movies don\'t load', () => {
+        cy.intercept('https://rancid-tomatillos.herokuapp.com/api/v2/movies',
+        { statusCode: 404
+        })
+        cy.visit('http://localhost:3000')
+        cy.get('h2').contains('nothing')
     });
 });
 
@@ -42,7 +50,7 @@ describe('SelectedMovie', () => {
 
 });
 
-describe('Paths for Network Requests', () => {
+describe('Paths for single movie and video network requests', () => {
 
     it('should show single movie details and trailer for movie page', () => {
         cy.intercept('https://rancid-tomatillos.herokuapp.com/api/v2/movies/694919/videos',
@@ -80,19 +88,24 @@ describe('Paths for Network Requests', () => {
                 }
             })
         
+            cy.visit('http://localhost:3000/694919')
+    });
+    
+    it('should show an error message when singular movie isn\'t available', () => {
+        cy.intercept('https://rancid-tomatillos.herokuapp.com/api/v2/movies/694919',
+            {
+                statusCode: 404
+            })
         cy.visit('http://localhost:3000/694919')
+        cy.get('h2').contains('cannot')
     });
 
-    // });
-    // it('should show an error message when all movies don\'t load', () => {
-
-    // });
-
-    // it('should show an error message when singular movie isn\'t available', () => {
-
-    // });
-
-    // it( 'should show an error message when video trailer isn\'t available', () => {
-
-    // });
+    it( 'should show an error message when video trailer isn\'t available', () => {
+        cy.intercept('https://rancid-tomatillos.herokuapp.com/api/v2/movies/694919',
+            {
+                statusCode: 404
+            })
+        cy.visit('http://localhost:3000/694919')
+        cy.get('h2').contains('can\'t')
+    });
 });
