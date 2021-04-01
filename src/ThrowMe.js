@@ -12,4 +12,3 @@ export const Example = () => {
         </motion.header>
     );
 }; 
-{/* <header className="App-header">Rotten T<span className="App-logo">🍅</span>matillos */}
