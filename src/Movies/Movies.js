@@ -2,6 +2,7 @@ import Movie from '../MovieCard/MovieCard';
 import SelectedMovie from '../SelectedMovie/SelectedMovie.js';
 import './Movies.css';
 import { Link, Route, Switch } from 'react-router-dom';
+import PropTypes from 'prop-types';
 // import { pulse } from 'react-animations';
 
 const MovieContainer = ({enlargeCard, movies, currentMovie, goBack, currentVideos}) => {
@@ -25,8 +26,8 @@ const MovieContainer = ({enlargeCard, movies, currentMovie, goBack, currentVideo
 
   const selectedMovie = (id) => {
     if (currentVideos.length) {
-      return <SelectedMovie id={currentMovie.id} goBack={goBack} 
-      foundMovie={currentMovie.film} currentVideos={currentVideos}/>
+      return <SelectedMovie id={currentMovie.id} foundMovie={currentMovie.film}
+       currentVideos={currentVideos}/>
     } else {
       enlargeCard(id)
     }
@@ -46,3 +47,11 @@ const MovieContainer = ({enlargeCard, movies, currentMovie, goBack, currentVideo
 }
 
 export default MovieContainer;
+
+MovieContainer.propTypes = {
+  enlargeCard: PropTypes.func,
+  movies: PropTypes.array,
+  currentMovie: PropTypes.object,
+  goBack: PropTypes.func,
+  currentVideos: PropTypes.array
+};
