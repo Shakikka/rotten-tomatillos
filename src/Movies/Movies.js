@@ -7,17 +7,11 @@ import { Link, Route, Switch } from 'react-router-dom';
 // import { pulse } from 'react-animations';
 
 const MovieContainer = ({enlargeCard, movies, currentMovie, goBack, currentVideos}) => {
-  const movieCards = (
-  <Carousel className="posters"
-  arrows 
-  thumbnails
-  slidesPerPage={5}
-  infinite
-  offset={40}
-  itemWidth={200}
-  >{
-    movies.map(movie => {
-      return (
+  
+  const buildMovieCards = (movies) => {
+    return movies.map(movie => {
+      if (movie) {
+        return (
         <Link to={`/${movie.id}`} key={movie.id}>
           <Movie
             id={movie.id}
@@ -27,10 +21,24 @@ const MovieContainer = ({enlargeCard, movies, currentMovie, goBack, currentVideo
             average_rating={movie.average_rating}
             release_date={movie.release_date}
             enlargeCard={enlargeCard}
-          />
+            />
         </Link>
-      )
-    })}</Carousel>
+        )
+      }
+    })
+  }
+  
+  const movieCards = (
+    <Carousel className="posters"
+      arrows 
+      thumbnails
+      slidesPerPage={5}
+      slidesPerScroll={5}
+      infinite
+      offset={40}
+      itemWidth={200}>
+      {buildMovieCards(movies)}
+    </Carousel>
   )
 
   const selectedMovie = (id) => {
@@ -42,23 +50,11 @@ const MovieContainer = ({enlargeCard, movies, currentMovie, goBack, currentVideo
     }
   }
 
+  
+
   const favoriteMovies = () => {
     const favArr = [movies[0], movies[1]];
-    const favCards = favArr.map(fav => {
-      if (fav) {
-        return <Link to={`/${fav.id}`} key={fav.id}>
-      <Movie
-        id={fav.id}
-        poster_path={fav.poster_path}
-        backdrop_path={fav.backdrop_path}
-        title={fav.title}
-        average_rating={fav.average_rating}
-        release_date={fav.release_date}
-        enlargeCard={enlargeCard}
-        />
-    </Link>
-  }
-    })
+    const favCards = buildMovieCards(favArr);
     return <Carousel
     arrows 
     slidesPerPage={5}
