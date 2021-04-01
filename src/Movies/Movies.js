@@ -1,7 +1,8 @@
 import Movie from '../MovieCard/MovieCard';
 import SelectedMovie from '../SelectedMovie/SelectedMovie.js';
 import './Movies.css';
-import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
+import { Link, Route, Switch } from 'react-router-dom';
+// import { pulse } from 'react-animations';
 
 const MovieContainer = ({enlargeCard, movies, currentMovie, goBack, currentVideos}) => {
   const movieCards = (<div className="posters">{
@@ -32,16 +33,14 @@ const MovieContainer = ({enlargeCard, movies, currentMovie, goBack, currentVideo
   }
 
   return (
-    <Router>
-      <Route
-        render={({ location }) => (
-          <Switch location={location} key={location.pathname}>
-            <Route exact path='/' children={() => <section className="movie-container">New Movies{movieCards}</section>}/>
-            <Route exact path="/:id" children={() => <section className="movie-container">{selectedMovie(location.pathname.split('/')[1])}</section>}/>
-          </Switch>
-        )}>
-      </Route>
-    </Router>
+    <Route
+      render={({ location }) => (
+        <Switch location={location} key={location.pathname}>
+          <Route exact path='/' children={() => <section className="movie-container">New Movies{movieCards}</section>}/>
+          <Route exact path="/:id" children={() => <section className="movie-container">{selectedMovie(location.pathname.split('/')[1])}</section>}/>
+        </Switch>
+      )}>
+    </Route>
 
   )
 }

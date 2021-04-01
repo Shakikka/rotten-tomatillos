@@ -12,18 +12,18 @@ const SelectedMovie = ({ goBack, foundMovie, currentVideos }) => {
         <article className="selected-movie" style={style}>
             <article className="movie-info">
                 <Link to='/'>
-                    <IoIosArrowDropleft onClick={ () => goBack() } role="button" className="go-back"/>
+                    <IoIosArrowDropleft role="button" className="go-back"/>
                 </Link>
                 <h1 className="movie-title">{foundMovie.title}</h1>
                 <i>{foundMovie.tagline}</i>
                 <h2>{'Overview: ' + foundMovie.overview}</h2>
-                <p>{'Average Rating: ' + foundMovie.average_rating}</p>
+                <p>{'Average Rating: ' + parseFloat(foundMovie.average_rating).toFixed(2)}</p>
                 <p>{'Released: ' + foundMovie.release_date}</p>
                 <p>{'Budget: $' + foundMovie.budget}</p>
                 <p>{'Genres: ' + foundMovie.genres}</p>
                 <p>{'Revenue: $' + foundMovie.revenue}</p>
                 <iframe
-                    src={`https://www.youtube.com/embed/${videoKey}`}
+                    src={`https://www.youtube-nocookie.com/embed/${videoKey}`}
                     frameBorder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen

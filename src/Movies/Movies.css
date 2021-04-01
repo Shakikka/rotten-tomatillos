@@ -25,13 +25,13 @@ h1 {
   color: rgb(223, 221, 221);
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 1024px) {
   .posters {
     grid-template: auto / repeat(3, 1fr);
   }
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 650px) {
   .posters {
     grid-template: auto / 1fr 1fr;
   }
