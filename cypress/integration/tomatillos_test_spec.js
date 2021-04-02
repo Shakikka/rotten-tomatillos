@@ -1,4 +1,4 @@
-
+        
 describe('Homepage', () => {
     
     beforeEach(() => {
@@ -30,7 +30,7 @@ describe('SelectedMovie', () => {
 
     beforeEach(() => {
         cy.visit('http://localhost:3000')
-        .get('div[class=posters]').find('a').first().click()
+        .get('.BrainhubCarousel__track').get('a').first().click({ force: true })
     })
 
     it('Should allow user to click on a poster', () => {
