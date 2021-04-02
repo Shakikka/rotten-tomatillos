@@ -13,7 +13,7 @@ const MovieContainer = ({enlargeCard, movies, currentMovie, currentVideos}) => {
   const wrapper = useRef(null)
 
   const buildMovieCards = (movies) => {
-    return movies.map(movie => {
+    return (movies.map(movie => {
       if (movie) {
         return (
         <Link to={`/${movie.id}`} key={movie.id} ref={wrapper}>
@@ -29,7 +29,7 @@ const MovieContainer = ({enlargeCard, movies, currentMovie, currentVideos}) => {
         </Link>
         )
       }
-    })
+    }) || null)
   }
   
   const movieCards = (
