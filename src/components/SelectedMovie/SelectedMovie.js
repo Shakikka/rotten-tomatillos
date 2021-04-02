@@ -3,6 +3,7 @@ import './SelectedMovie.css';
 import { Link } from 'react-router-dom';
 import  PropTypes from 'prop-types';
 
+
 const SelectedMovie = ({ foundMovie, currentVideos }) => {
     const style = {
         backgroundImage: `url(${foundMovie.backdrop_path})`

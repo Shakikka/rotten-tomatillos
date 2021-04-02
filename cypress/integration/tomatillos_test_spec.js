@@ -51,6 +51,23 @@ describe('SelectedMovie', () => {
 });
 
 describe('Paths for single movie and video network requests', () => {
+    it('should show an error message when singular movie isn\'t available', () => {
+        cy.intercept('https://rancid-tomatillos.herokuapp.com/api/v2/movies/694919',
+            {
+                statusCode: 404
+            })
+        cy.visit('http://localhost:3000/694919')
+        cy.get('h2').contains('cannot')
+    });
+
+    it( 'should show an error message when video trailer isn\'t available', () => {
+        cy.intercept('https://rancid-tomatillos.herokuapp.com/api/v2/movies/694919',
+            {
+                statusCode: 404
+            })
+        cy.visit('http://localhost:3000/694919')
+        cy.get('h2').contains('can\'t')
+    });
 
     it('should show single movie details and trailer for movie page', () => {
         cy.intercept('https://rancid-tomatillos.herokuapp.com/api/v2/movies/694919/videos',
@@ -91,21 +108,4 @@ describe('Paths for single movie and video network requests', () => {
             cy.visit('http://localhost:3000/694919')
     });
     
-    it('should show an error message when singular movie isn\'t available', () => {
-        cy.intercept('https://rancid-tomatillos.herokuapp.com/api/v2/movies/694919',
-            {
-                statusCode: 404
-            })
-        cy.visit('http://localhost:3000/694919')
-        cy.get('h2').contains('cannot')
-    });
-
-    it( 'should show an error message when video trailer isn\'t available', () => {
-        cy.intercept('https://rancid-tomatillos.herokuapp.com/api/v2/movies/694919',
-            {
-                statusCode: 404
-            })
-        cy.visit('http://localhost:3000/694919')
-        cy.get('h2').contains('can\'t')
-    });
 });

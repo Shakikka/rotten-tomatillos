@@ -52,11 +52,16 @@ const MovieContainer = ({enlargeCard, movies, currentMovie, currentVideos}) => {
     if (currentVideos.length) {
       return <SelectedMovie id={currentMovie.id} foundMovie={currentMovie.film}
        currentVideos={currentVideos}/>
-    } else {
+    } else if (/^\d+$/.test(id) && id.length === 6) {
       enlargeCard(id)
+    } else {
+      return <Link to='/'><h2> 404: You must be lost. Please try again</h2></Link>
     }
   }
 
+  const checkID = (id) => {
+    return movies.find(movie => movie.id === id)
+  }
   
 
   const favoriteMovies = () => {
@@ -80,6 +85,7 @@ const MovieContainer = ({enlargeCard, movies, currentMovie, currentVideos}) => {
         <Switch location={location} key={location.pathname}>
           <Route exact path='/' children={() => <section className="movie-container">New Movies{movieCards}Favorites{favoriteMovies()}</section>}/>
           <Route exact path="/:id" children={() => <section className="movie-container">{selectedMovie(location.pathname.split('/')[1])}</section>}/>
+          <Route render={()=> <Link to='/'><h2> 404: You must be lost. Please try again</h2></Link>}/>
         </Switch>
       )}>
     </Route>
