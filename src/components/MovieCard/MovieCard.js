@@ -1,4 +1,4 @@
-// import React from 'react';
+import PropTypes from 'prop-types';
 import './MovieCard.css';
 
 const Movie = ({ id, poster_path, title, enlargeCard, average_rating}) => {
@@ -11,3 +11,11 @@ const Movie = ({ id, poster_path, title, enlargeCard, average_rating}) => {
 }
 
 export default Movie
+
+Movie.propTypes = {
+  id: PropTypes.number,
+  poster_path: PropTypes.string,
+  title: PropTypes.string,
+  enlargeCard: PropTypes.func,
+  average_rating: PropTypes.number
+}

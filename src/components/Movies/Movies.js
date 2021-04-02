@@ -5,9 +5,10 @@ import '@brainhubeu/react-carousel/lib/style.css';
 import Carousel from '@brainhubeu/react-carousel';
 import { Link, Route, Switch } from 'react-router-dom';
 import { useRef } from 'react';
+import PropTypes from 'prop-types';
 // import { pulse } from 'react-animations';
 
-const MovieContainer = ({enlargeCard, movies, currentMovie, goBack, currentVideos}) => {
+const MovieContainer = ({enlargeCard, movies, currentMovie, currentVideos}) => {
 
   const wrapper = useRef(null)
 
@@ -49,8 +50,8 @@ const MovieContainer = ({enlargeCard, movies, currentMovie, goBack, currentVideo
 
   const selectedMovie = (id) => {
     if (currentVideos.length) {
-      return <SelectedMovie id={currentMovie.id} goBack={goBack} 
-      foundMovie={currentMovie.film} currentVideos={currentVideos}/>
+      return <SelectedMovie id={currentMovie.id} foundMovie={currentMovie.film}
+       currentVideos={currentVideos}/>
     } else {
       enlargeCard(id)
     }
@@ -87,3 +88,11 @@ const MovieContainer = ({enlargeCard, movies, currentMovie, goBack, currentVideo
 }
 
 export default MovieContainer;
+
+MovieContainer.propTypes = {
+  enlargeCard: PropTypes.func,
+  movies: PropTypes.array,
+  currentMovie: PropTypes.object,
+  goBack: PropTypes.func,
+  currentVideos: PropTypes.array
+};

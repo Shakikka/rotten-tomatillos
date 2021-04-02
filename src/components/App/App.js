@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
-import { getMovies, getMovie, getTrailer } from './apiCalls.js'
-import MovieContainer from './Movies/Movies';
+import { getMovies, getMovie, getTrailer } from '../../apiCalls.js'
+import MovieContainer from '../Movies/Movies';
 // import { MdMovie } from "react-icons/md";
 import { RiMovie2Line } from 'react-icons/ri';
 import { GiFilmProjector } from 'react-icons/gi';

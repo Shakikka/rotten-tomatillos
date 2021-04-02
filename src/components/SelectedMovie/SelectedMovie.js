@@ -1,8 +1,9 @@
 import { IoIosArrowDropleft } from "react-icons/io";
-import './SelectedMovie.css'
+import './SelectedMovie.css';
 import { Link } from 'react-router-dom';
+import  PropTypes from 'prop-types';
 
-const SelectedMovie = ({ goBack, foundMovie, currentVideos }) => {
+const SelectedMovie = ({ foundMovie, currentVideos }) => {
     const style = {
         backgroundImage: `url(${foundMovie.backdrop_path})`
     }
@@ -37,3 +38,8 @@ const SelectedMovie = ({ goBack, foundMovie, currentVideos }) => {
 }
 
 export default SelectedMovie;
+
+SelectedMovie.propTypes = {
+    foundMovie: PropTypes.object,
+    currentVideos: PropTypes.array
+}
