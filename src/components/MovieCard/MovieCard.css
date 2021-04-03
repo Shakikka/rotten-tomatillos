@@ -1,7 +1,5 @@
 .movie-card {
   cursor: pointer;
-  
-  padding: 20%;
 }
 
 .movie-card > img {
