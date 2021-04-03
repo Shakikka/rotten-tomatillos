@@ -6,46 +6,52 @@ import Carousel from '@brainhubeu/react-carousel';
 import { Link, Route, Switch } from 'react-router-dom';
 import { useRef } from 'react';
 import PropTypes from 'prop-types';
+import { Draggable, Droppable } from 'react-beautiful-dnd';
 // import { pulse } from 'react-animations';
 
-const MovieContainer = ({enlargeCard, movies, currentMovie, currentVideos}) => {
+const MovieContainer = ({enlargeCard, movies, currentMovie, currentVideos, favorites}) => {
 
   const wrapper = useRef(null)
 
   const buildMovieCards = (movies) => {
-    return movies.map(movie => {
+    return movies.map((movie, index) => {
       if (movie) {
         return (
-        <Link to={`/${movie.id}`} key={movie.id} ref={wrapper}>
-          <Movie
-            id={movie.id}
-            poster_path={movie.poster_path}
-            backdrop_path={movie.backdrop_path}
-            title={movie.title}
-            average_rating={movie.average_rating}
-            release_date={movie.release_date}
-            enlargeCard={enlargeCard}
-            />
+      
+            <Link to={`/${movie.id}`} key={movie.id}>
+              <Movie
+                id={movie.id}
+                poster_path={movie.poster_path}
+                backdrop_path={movie.backdrop_path}
+                title={movie.title}
+                average_rating={movie.average_rating}
+                release_date={movie.release_date}
+                enlargeCard={enlargeCard}
+                index={index}
+              />
         </Link>
-        )
-      }
-    })
-  }
+            )
+          }        
+        })
+    }
+
   
   const movieCards = (
-
-    <Carousel 
-      nodeRef={wrapper}
-      className="posters"
-      arrows 
-      thumbnails
-      slidesPerPage={5}
-      slidesPerScroll={5}
-      infinite
-      offset={40}
-      itemWidth={200}>
+   
+  <Droppable
+    droppableId="newMovies"
+    direction="horizontal"
+    >
+  {(provided) => 
+    <div 
+    className="posters"
+      ref={provided.innerRef}
+    {...provided.droppableProps}>
       {buildMovieCards(movies)}
-    </Carousel>
+      {provided.placeholder}
+    </div>
+      }
+  </Droppable>
   )
 
   const selectedMovie = (id) => {
@@ -60,17 +66,20 @@ const MovieContainer = ({enlargeCard, movies, currentMovie, currentVideos}) => {
   
 
   const favoriteMovies = () => {
-    const favArr = [movies[0], movies[1]];
-    const favCards = buildMovieCards(favArr);
+    const favCards = buildMovieCards(favorites, true);
     return (
-    <Carousel
-    nodeRef={wrapper}
-    arrows 
-    slidesPerPage={5}
-    offset={40}
-    itemWidth={200}>
+    <Droppable
+    droppableId="favorites"
+    direction="horizontal"
+    >
+    {(provided) => <div
+    className="posters"
+    ref={provided.innerRef}
+    {...provided.droppableProps}>
     {favCards}
-    </Carousel>
+    {provided.placeholder}
+    </div>}
+      </Droppable>
   )
   }
 
