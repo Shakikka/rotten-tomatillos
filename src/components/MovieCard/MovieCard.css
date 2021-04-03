@@ -1,9 +1,10 @@
 .movie-card {
   cursor: pointer;
-  margin-top: 3%;
+  
+  padding: 20%;
 }
 
-img {
-  width: 100%;
-  border-radius: 5px;
+.movie-card > img {
+  width: 15vh;
+  border-radius: 20px;
 }
