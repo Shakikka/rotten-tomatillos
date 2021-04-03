@@ -2,16 +2,16 @@ import Movie from '../MovieCard/MovieCard';
 import SelectedMovie from '../SelectedMovie/SelectedMovie.js';
 import './Movies.css';
 import '@brainhubeu/react-carousel/lib/style.css';
-import Carousel from '@brainhubeu/react-carousel';
 import { Link, Route, Switch } from 'react-router-dom';
-import { useRef } from 'react';
 import PropTypes from 'prop-types';
-import { Draggable, Droppable } from 'react-beautiful-dnd';
+import { Droppable } from 'react-beautiful-dnd';
+// import Carousel from '@brainhubeu/react-carousel';
+// import { useRef } from 'react';
 // import { pulse } from 'react-animations';
 
 const MovieContainer = ({enlargeCard, movies, currentMovie, currentVideos, favorites}) => {
 
-  const wrapper = useRef(null)
+  // const wrapper = useRef(null)
 
   const buildMovieCards = (movies) => {
     return movies.map((movie, index) => {
@@ -65,9 +65,9 @@ const MovieContainer = ({enlargeCard, movies, currentMovie, currentVideos, favor
     }
   }
 
-  const checkID = (id) => {
-    return movies.find(movie => movie.id === id)
-  }
+  // const checkID = (id) => {
+  //   return movies.find(movie => movie.id === id)
+  // }
   
 
   const favoriteMovies = () => {

@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import './App.css';
 import { getMovies, getMovie, getTrailer } from '../../apiCalls.js';
 import MovieContainer from '../Movies/Movies';
+import { DragDropContext } from 'react-beautiful-dnd'
 import { GiDoubleDiaphragm } from "react-icons/gi";
 import { GiAbstract091 } from 'react-icons/gi';
 import { GiFilmProjector } from 'react-icons/gi';
-import { DragDropContext } from 'react-beautiful-dnd'
 
 
 class App extends Component {
@@ -107,7 +107,6 @@ class App extends Component {
 
   matchByIds(ids) {
     if (ids) {
-      console.log(ids.map(id => this.state.movies.find(movie => movie.id === id)))
       return ids.map(id => this.state.movies.find(movie => movie.id === id))
     }
     
