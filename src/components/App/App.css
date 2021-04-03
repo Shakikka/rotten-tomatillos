@@ -20,6 +20,18 @@
 .movie-logo {
   float: right;
   height: 10vh;
+  display: grid;
+  grid-template: .1fr .8fr 1.2fr 1fr / 1fr 1.1fr 1.4fr;
+}
+
+.camera{
+  grid-area: 1/1/5/4;
+}
+.reel {
+  height: 3vh;
+  width: 3vh;
+  grid-area: 2/2/3/3;
+  color: #4A4E69;
 }
 
 @media (prefers-reduced-motion: no-preference) {
