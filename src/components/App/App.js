@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import './App.css';
-import { getMovies, getMovie, getTrailer } from '../../apiCalls.js'
+import { getMovies, getMovie, getTrailer } from '../../apiCalls.js';
 import MovieContainer from '../Movies/Movies';
 import { GiDoubleDiaphragm } from "react-icons/gi";
 import { GiAbstract091 } from 'react-icons/gi';
 import { GiFilmProjector } from 'react-icons/gi';
+import { DragDropContext } from 'react-beautiful-dnd'
 
 
 class App extends Component {
@@ -12,15 +13,30 @@ class App extends Component {
     super();
     this.state = {
       movies: [],
+      favorites: [],
       currentMovie: {active: false, id: null, film: {}},
       currentVideos: [],
-      error: ''
+      error: '',
+      rows: {
+        'newMovies': {
+          id: 'newMovies',
+          movieIds: [],
+        },
+        'favorites': {
+          id: 'favorites',
+          movieIds: [],
+        }
+      },
+      rowOrder: ['newMovies', 'favorites']
     }
   }
 
   componentDidMount() {
     getMovies()
-    .then(movies => this.setState({ movies: movies.movies }))
+    .then(movies => {
+       this.setState({ movies: movies.movies})
+       this.setState({rows: {'newMovies': {movieIds: movies.movies.map(movie => movie.id), id: 'newMovies'}, 'favorites': {movieIds: this.state.favorites.map(movie => movie.id), id: 'favorites'}}})
+      })
     .catch(error => this.setState({ error: `There is nothing here ${error.message}`}))
   }
 
@@ -40,9 +56,67 @@ class App extends Component {
       .catch(error => this.setState({ error: `We can't find your trailer ${error.message}` }))
   }
 
+  onDragEnd = (result) => {
+    const { destination, source, draggableId } = result;
+
+    if (!destination) {
+      return;
+    }
+
+    if (
+      destination.droppableId === source.droppableId &&
+      destination.index === source.index
+    ) {
+      return;
+    }
+    const start = this.state.rows[source.droppableId];
+    const finish = this.state.rows[destination.droppableId]
+
+    if (start === finish) {
+
+      const newMovies = Array.from(start.movieIds);
+      newMovies.splice(source.index,  1);
+      newMovies.splice(destination.index, 0, Number(draggableId));
+      
+      const newRow = {
+        ...start,
+        movieIds: newMovies
+      }
+      
+      this.setState({rows: {
+        ...this.state.rows,
+        [newRow.id]: newRow
+      }})
+      return;
+  }
+
+  const startMovieIds = Array.from(start.movieIds)
+  startMovieIds.splice(source.index, 1);
+  const newStart = {
+    ...start,
+    movieIds: startMovieIds,
+  }
+  const finishMovieIds = Array.from(finish.movieIds)
+  finishMovieIds.splice(destination.index, 0, Number(draggableId));
+  const newFinish = {
+    ...finish,
+    movieIds: finishMovieIds
+  }
+  this.setState({rows: {...this.state.rows, [newStart.id]: newStart, [newFinish.id]: newFinish}})
+  }
+
+  matchByIds(ids) {
+    if (ids) {
+      console.log(ids.map(id => this.state.movies.find(movie => movie.id === id)))
+      return ids.map(id => this.state.movies.find(movie => movie.id === id))
+    }
+    
+  }
+
   render() {
     return (
-        <div className="App">
+      
+      <div className="App">
         <header className="App-header">Rotten T🍅matillos
           <div className="movie-logo">
             <GiFilmProjector className="camera"/>
@@ -50,10 +124,13 @@ class App extends Component {
             
           </div>
           </header>
-          <MovieContainer movies={this.state.movies} currentMovie={this.state.currentMovie}
+          <DragDropContext onDragEnd={this.onDragEnd}>
+          <MovieContainer movies={this.matchByIds(this.state.rows.newMovies.movieIds)} currentMovie={this.state.currentMovie}
           enlargeCard={this.enlargeCard} goBack={this.goBack}
-          currentVideos={this.state.currentVideos}/>
+          currentVideos={this.state.currentVideos} 
+          favorites={this.matchByIds(this.state.rows.favorites.movieIds)}/>
           {this.state.error.length && <h2>{this.state.error}</h2>}
+      </DragDropContext>
         </div>
     );
   }
