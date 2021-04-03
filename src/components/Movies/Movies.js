@@ -14,7 +14,6 @@ const MovieContainer = ({enlargeCard, movies, currentMovie, currentVideos, favor
   const wrapper = useRef(null)
 
   const buildMovieCards = (movies) => {
-    console.log(movies)
     return movies.map((movie, index) => {
       if (movie) {
         return (
@@ -88,8 +87,7 @@ const MovieContainer = ({enlargeCard, movies, currentMovie, currentVideos, favor
     <Route
       render={({ location }) => (
         <Switch location={location} key={location.pathname}>
-          <Route exact path='/' children={() => <section className="movie-container">
-            New Movies{movieCards}Favorites{favoriteMovies()}</section>}/>
+          <Route exact path='/' children={() => <section className="movie-container">New Movies{movieCards}Favorites{favoriteMovies()}</section>}/>
           <Route exact path="/:id" children={() => <section className="movie-container">{selectedMovie(location.pathname.split('/')[1])}</section>}/>
         </Switch>
       )}>

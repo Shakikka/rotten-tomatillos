@@ -20,6 +20,8 @@
   margin-top: 0;
   margin-bottom: 2%;
   display: flex;
+  /* grid-template: 1fr / repeat(50%); */
+  overflow-x: scroll;
 }
 
 h1 {
@@ -32,12 +34,12 @@ p {
 
 @media screen and (max-width: 1024px) {
   .posters {
-    grid-template: auto / repeat(3, 1fr);
+    /* grid-template: auto / repeat(3, 1fr); */
   }
 }
 
 @media screen and (max-width: 650px) {
   .posters {
-    grid-template: auto / 1fr 1fr;
+    /* grid-template: auto / 1fr 1fr; */
   }
 }
