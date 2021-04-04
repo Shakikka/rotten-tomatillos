@@ -125,11 +125,11 @@ class App extends Component {
           </div>
           </header>
           <DragDropContext onDragEnd={this.onDragEnd}>
+          {this.state.error && <h2>{this.state.error}</h2>}
           <MovieContainer movies={this.matchByIds(this.state.rows.newMovies.movieIds)} currentMovie={this.state.currentMovie}
           enlargeCard={this.enlargeCard} goBack={this.goBack}
           currentVideos={this.state.currentVideos} 
           favorites={this.matchByIds(this.state.rows.favorites.movieIds)}/>
-          {this.state.error.length && <h2>{this.state.error}</h2>}
       </DragDropContext>
         </div>
     );
