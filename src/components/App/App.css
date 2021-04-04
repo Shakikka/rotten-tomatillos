@@ -11,6 +11,11 @@
   font-weight: bolder;
 }
 
+.flipped {
+  margin-bottom: -15px;
+  transform: rotate(180deg);
+}
+
 .App {
   display: flex;
   flex-flow: column;
@@ -21,7 +26,6 @@
   float: right;
   height: 10vh;
   display: grid;
-  /* grid-template: .2fr .15fr .15fr .62fr 1.2fr 1fr / .32fr .9fr .1fr 1fr 2fr; */
   grid-template: auto(20, 5%) / auto(20, 5%)
 }
 
