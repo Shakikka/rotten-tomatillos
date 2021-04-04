@@ -6,6 +6,7 @@ import { DragDropContext } from 'react-beautiful-dnd'
 import { GiArtificialHive } from "react-icons/gi";
 import { GiAbstract091 } from 'react-icons/gi';
 import { GiFilmProjector } from 'react-icons/gi';
+import { GiCircleClaws } from 'react-icons/gi';
 
 
 class App extends Component {
@@ -122,7 +123,7 @@ class App extends Component {
           <div className="movie-logo">
             <GiFilmProjector className="camera"/>
             <GiAbstract091 className="App-logo reel1"/>
-            <GiArtificialHive className="App-logo reel2"/>
+            <GiCircleClaws className="App-logo reel2"/>
           </div>
           </header>
           <DragDropContext onDragEnd={this.onDragEnd}>
