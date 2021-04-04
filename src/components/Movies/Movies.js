@@ -5,9 +5,7 @@ import '@brainhubeu/react-carousel/lib/style.css';
 import { Link, Route, Switch } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Droppable } from 'react-beautiful-dnd';
-// import Carousel from '@brainhubeu/react-carousel';
-// import { useRef } from 'react';
-// import { pulse } from 'react-animations';
+
 
 const MovieContainer = ({enlargeCard, movies, currentMovie, currentVideos, favorites}) => {
 
