@@ -3,7 +3,7 @@ import './App.css';
 import { getMovies, getMovie, getTrailer } from '../../apiCalls.js';
 import MovieContainer from '../Movies/Movies';
 import { DragDropContext } from 'react-beautiful-dnd'
-import { GiArtificialHive } from "react-icons/gi";
+// import { GiArtificialHive } from "react-icons/gi";
 import { GiAbstract091 } from 'react-icons/gi';
 import { GiFilmProjector } from 'react-icons/gi';
 import { GiCircleClaws } from 'react-icons/gi';
