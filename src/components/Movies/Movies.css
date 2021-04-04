@@ -26,6 +26,20 @@
   
 }
 
+.posters::-webkit-scrollbar {
+  background-color: transparent;
+  border-radius: 10px;
+  height: 55px;
+}
+
+.posters::-webkit-scrollbar-thumb {
+  background-image: url('../../turtle-shell.svg');
+  color: #9fa0ff;
+  border-radius: 10px;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
 h1 {
   color: rgb(223, 221, 221);
 }

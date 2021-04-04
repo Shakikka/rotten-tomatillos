@@ -3,10 +3,11 @@ import './App.css';
 import { getMovies, getMovie, getTrailer } from '../../apiCalls.js';
 import MovieContainer from '../Movies/Movies';
 import { DragDropContext } from 'react-beautiful-dnd'
-// import { GiArtificialHive } from "react-icons/gi";
+import { GiTortoise } from "react-icons/gi";
 import { GiAbstract091 } from 'react-icons/gi';
 import { GiFilmProjector } from 'react-icons/gi';
 import { GiCircleClaws } from 'react-icons/gi';
+import "../../tortoise.svg"
 
 
 class App extends Component {
@@ -118,7 +119,8 @@ class App extends Component {
     return (
       
       <div className="App">
-        <header className="App-header">Rotten T🍅matillos
+        <header className="App-header">
+          Rotten T<GiTortoise className="flipped"></GiTortoise>rtle Tales
           <div className="movie-logo">
             <GiFilmProjector className="camera"/>
             <GiAbstract091 className="App-logo reel1"/>
