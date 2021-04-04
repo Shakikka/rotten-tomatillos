@@ -29,16 +29,16 @@
   grid-area: 1/1/21/21;
 }
 .reel1 {
-  height: 2.4vh;
-  width: 2.4vh;
-  grid-area: 2/8/13/13;
+  height: 2.5vh;
+  width: 2.5vh;
+  grid-area: 2/10/12/13;
   color: #4A4E69;
 }
 
 .reel2 {
   height: 2.25vh;
   width: 2.25vh;
-  grid-area: 5/3/8/8;
+  grid-area: 5/3/8/10;
   color: #4A4E69;
 
 }
