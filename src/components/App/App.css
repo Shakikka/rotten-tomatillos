@@ -21,23 +21,24 @@
   float: right;
   height: 10vh;
   display: grid;
-  grid-template: .2fr .16fr .65fr 1.2fr 1fr / .32fr .83fr .1fr 1fr 2fr;
+  /* grid-template: .2fr .15fr .15fr .62fr 1.2fr 1fr / .32fr .9fr .1fr 1fr 2fr; */
+  grid-template: auto(20, 5%) / auto(20, 5%)
 }
 
 .camera{
-  grid-area: 1/1/6/6;
+  grid-area: 1/1/21/21;
 }
 .reel1 {
-  height: 2.5vh;
-  width: 2.5vh;
-  grid-area: 2/3/4/4;
+  height: 2.4vh;
+  width: 2.4vh;
+  grid-area: 2/8/13/13;
   color: #4A4E69;
 }
 
 .reel2 {
-  height: 2vh;
-  width: 2vh;
-  grid-area: 3/2/4/3;
+  height: 2.25vh;
+  width: 2.25vh;
+  grid-area: 5/3/8/8;
   color: #4A4E69;
 
 }
