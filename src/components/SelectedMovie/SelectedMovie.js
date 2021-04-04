@@ -19,7 +19,7 @@ const SelectedMovie = ({ foundMovie, currentVideos }) => {
                 <h1 className="movie-title">{foundMovie.title}</h1>
                 <i>{foundMovie.tagline}</i>
                 <h2>{'Overview: ' + foundMovie.overview}</h2>
-                <p>{'Average Rating: ' + parseFloat(foundMovie.average_rating).toFixed(2)}</p>
+                <p>{'Average Rating: ' + parseFloat(foundMovie.average_rating).toFixed(1)}</p>
                 <p>{'Released: ' + foundMovie.release_date}</p>
                 <p>{'Budget: $' + foundMovie.budget}</p>
                 <p>{'Genres: ' + foundMovie.genres}</p>

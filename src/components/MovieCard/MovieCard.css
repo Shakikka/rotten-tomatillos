@@ -5,4 +5,5 @@
 .movie-card > img {
   width: 15vh;
   border-radius: 20px;
+  margin: 10px;
 }
