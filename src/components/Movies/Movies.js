@@ -2,16 +2,16 @@ import Movie from '../MovieCard/MovieCard';
 import SelectedMovie from '../SelectedMovie/SelectedMovie.js';
 import './Movies.css';
 import '@brainhubeu/react-carousel/lib/style.css';
-import Carousel from '@brainhubeu/react-carousel';
 import { Link, Route, Switch } from 'react-router-dom';
-import { useRef } from 'react';
 import PropTypes from 'prop-types';
-import { Draggable, Droppable } from 'react-beautiful-dnd';
+import { Droppable } from 'react-beautiful-dnd';
+// import Carousel from '@brainhubeu/react-carousel';
+// import { useRef } from 'react';
 // import { pulse } from 'react-animations';
 
 const MovieContainer = ({enlargeCard, movies, currentMovie, currentVideos, favorites}) => {
 
-  const wrapper = useRef(null)
+  // const wrapper = useRef(null)
 
   const buildMovieCards = (movies) => {
     return movies.map((movie, index) => {
@@ -58,11 +58,16 @@ const MovieContainer = ({enlargeCard, movies, currentMovie, currentVideos, favor
     if (currentVideos.length) {
       return <SelectedMovie id={currentMovie.id} foundMovie={currentMovie.film}
        currentVideos={currentVideos}/>
-    } else {
+    } else if (/^\d+$/.test(id) && id.length === 6) {
       enlargeCard(id)
+    } else {
+      return <Link to='/'><h2> 404: You must be lost. Please try again</h2></Link>
     }
   }
 
+  // const checkID = (id) => {
+  //   return movies.find(movie => movie.id === id)
+  // }
   
 
   const favoriteMovies = () => {
@@ -89,6 +94,7 @@ const MovieContainer = ({enlargeCard, movies, currentMovie, currentVideos, favor
         <Switch location={location} key={location.pathname}>
           <Route exact path='/' children={() => <section className="movie-container">New Movies{movieCards}Favorites{favoriteMovies()}</section>}/>
           <Route exact path="/:id" children={() => <section className="movie-container">{selectedMovie(location.pathname.split('/')[1])}</section>}/>
+          <Route render={()=> <Link to='/'><h2> 404: You must be lost. Please try again</h2></Link>}/>
         </Switch>
       )}>
     </Route>

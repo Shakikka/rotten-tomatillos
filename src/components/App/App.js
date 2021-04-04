@@ -2,9 +2,11 @@ import React, { Component } from 'react';
 import './App.css';
 import { getMovies, getMovie, getTrailer } from '../../apiCalls.js';
 import MovieContainer from '../Movies/Movies';
-import { RiMovie2Line } from 'react-icons/ri';
+import { DragDropContext } from 'react-beautiful-dnd'
+import { GiArtificialHive } from "react-icons/gi";
+import { GiAbstract091 } from 'react-icons/gi';
 import { GiFilmProjector } from 'react-icons/gi';
-import { DragDropContext } from 'react-beautiful-dnd';
+import { GiCircleClaws } from 'react-icons/gi';
 
 
 class App extends Component {
@@ -34,7 +36,8 @@ class App extends Component {
     getMovies()
     .then(movies => {
        this.setState({ movies: movies.movies})
-       this.setState({rows: {'newMovies': {movieIds: movies.movies.map(movie => movie.id), id: 'newMovies'}, 'favorites': {movieIds: this.state.favorites.map(movie => movie.id), id: 'favorites'}}})
+       this.setState({rows: {'newMovies': {movieIds: movies.movies.map(movie => movie.id),
+         id: 'newMovies'}, 'favorites': {movieIds: this.state.favorites.map(movie => movie.id), id: 'favorites'}}})
       })
     .catch(error => this.setState({ error: `There is nothing here ${error.message}`}))
   }
@@ -106,7 +109,6 @@ class App extends Component {
 
   matchByIds(ids) {
     if (ids) {
-      console.log(ids.map(id => this.state.movies.find(movie => movie.id === id)))
       return ids.map(id => this.state.movies.find(movie => movie.id === id))
     }
     
@@ -117,8 +119,11 @@ class App extends Component {
       
       <div className="App">
         <header className="App-header">Rotten T🍅matillos
-            <GiFilmProjector className="movie-logo"/>
-            <RiMovie2Line className="movie-logo App-logo"/>
+          <div className="movie-logo">
+            <GiFilmProjector className="camera"/>
+            <GiAbstract091 className="App-logo reel1"/>
+            <GiCircleClaws className="App-logo reel2"/>
+          </div>
           </header>
           <DragDropContext onDragEnd={this.onDragEnd}>
           <MovieContainer movies={this.matchByIds(this.state.rows.newMovies.movieIds)} currentMovie={this.state.currentMovie}

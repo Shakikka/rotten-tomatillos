@@ -20,11 +20,32 @@
 .movie-logo {
   float: right;
   height: 10vh;
+  display: grid;
+  /* grid-template: .2fr .15fr .15fr .62fr 1.2fr 1fr / .32fr .9fr .1fr 1fr 2fr; */
+  grid-template: auto(20, 5%) / auto(20, 5%)
+}
+
+.camera{
+  grid-area: 1/1/21/21;
+}
+.reel1 {
+  height: 2.5vh;
+  width: 2.5vh;
+  grid-area: 2/10/12/13;
+  color: #4A4E69;
+}
+
+.reel2 {
+  height: 2.2vh;
+  width: 2.2vh;
+  grid-area: 5/3/8/10;
+  color: #4A4E69;
+
 }
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
-    animation: App-logo-spin infinite 5s linear;
+    animation: App-logo-spin infinite 4s linear;
   }
 }
 
@@ -39,12 +60,12 @@
 
 @media screen and (max-width: 1024px) {
   .App-header {
-    font-size: 7vh;
+    /* font-size: 7vh; */
   }
 }
 
 @media screen and (max-width: 550px) {
   .App-header {
-    font-size: 5vh;
+    /* font-size: 5vh; */
   }
 }
