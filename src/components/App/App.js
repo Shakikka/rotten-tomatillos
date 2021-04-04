@@ -109,7 +109,6 @@ class App extends Component {
 
   matchByIds(ids) {
     if (ids) {
-
       return ids.map(id => this.state.movies.find(movie => movie.id === id))
     }
     
