@@ -35,7 +35,8 @@ class App extends Component {
     getMovies()
     .then(movies => {
        this.setState({ movies: movies.movies})
-       this.setState({rows: {'newMovies': {movieIds: movies.movies.map(movie => movie.id), id: 'newMovies'}, 'favorites': {movieIds: this.state.favorites.map(movie => movie.id), id: 'favorites'}}})
+       this.setState({rows: {'newMovies': {movieIds: movies.movies.map(movie => movie.id),
+         id: 'newMovies'}, 'favorites': {movieIds: this.state.favorites.map(movie => movie.id), id: 'favorites'}}})
       })
     .catch(error => this.setState({ error: `There is nothing here ${error.message}`}))
   }
@@ -107,6 +108,7 @@ class App extends Component {
 
   matchByIds(ids) {
     if (ids) {
+
       return ids.map(id => this.state.movies.find(movie => movie.id === id))
     }
     
