@@ -121,8 +121,8 @@ class App extends Component {
         <header className="App-header">Rotten T🍅matillos
           <div className="movie-logo">
             <GiFilmProjector className="camera"/>
-            <GiAbstract091 className="App-logo reel"/>
-            
+            <GiAbstract091 className="App-logo reel1"/>
+            <GiDoubleDiaphragm className="App-logo reel2"/>
           </div>
           </header>
           <DragDropContext onDragEnd={this.onDragEnd}>
