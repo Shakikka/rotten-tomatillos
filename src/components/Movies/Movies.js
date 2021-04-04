@@ -76,7 +76,7 @@ const MovieContainer = ({enlargeCard, movies, currentMovie, currentVideos, favor
     direction="horizontal"
     >
     {(provided) => <div
-    className="posters"
+    className="posters favorites"
     ref={provided.innerRef}
     {...provided.droppableProps}>
     {favCards}

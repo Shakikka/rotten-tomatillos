@@ -1,4 +1,3 @@
-        
 describe('Homepage', () => {
     
     beforeEach(() => {
@@ -6,7 +5,7 @@ describe('Homepage', () => {
     });
     
     it('Should be able to visit the page and render the correct elements', () => {
-        cy.contains('Rotten T🍅matillos')
+        cy.contains('Rotten T')
         cy.get('section[class=movie-container]')
     });
     
@@ -30,7 +29,7 @@ describe('SelectedMovie', () => {
 
     beforeEach(() => {
         cy.visit('http://localhost:3000')
-        .get('.BrainhubCarousel__track').get('a').first().click({ force: true })
+        .get('.movie-card').first().click()
     })
 
     it('Should allow user to click on a poster', () => {
@@ -80,3 +79,6 @@ describe('Paths for single movie and video network requests', () => {
     });
     
 });
+
+
+//We tried desperately to test drag and drop, but it is impossible with Cypress and react-beautiful-dnd
