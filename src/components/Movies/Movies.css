@@ -23,7 +23,7 @@
   /* grid-template: 1fr / repeat(50%); */
   overflow-x: scroll;
   min-height: 320px;
-  background: #22223B;
+  /* background: #22223B; */
   border-radius: 10px;
   padding: 15px;
 }

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import  PropTypes from 'prop-types';
 
 
-const SelectedMovie = ({ genres, budget, revenue, foundMovie, currentVideos }) => {
+const SelectedMovie = ({ foundMovie, currentVideos }) => {
     const style = {
         backgroundImage: `url(${foundMovie.backdrop_path})`
     }
@@ -17,13 +17,14 @@ const SelectedMovie = ({ genres, budget, revenue, foundMovie, currentVideos }) =
                     <IoIosArrowDropleft role="button" className="go-back"/>
                 </Link>
                 <h1 className="movie-title">{foundMovie.title}</h1>
+                <p>{'Runtime ' + foundMovie.runtime + 'minutes'}</p>
                 <i>{foundMovie.tagline}</i>
                 <h2>{'Overview: ' + foundMovie.overview}</h2>
                 <p>{'Average Rating: ' + parseFloat(foundMovie.average_rating).toFixed(1)}</p>
                 <p>{'Released: ' + foundMovie.release_date}</p>
-                <p>{'Budget: $' + budget}</p>
-                <p>{'Genres: ' + genres}</p>
-                <p>{'Revenue: $' + revenue}</p>
+                <p>{'Budget: $' + foundMovie.budget}</p>
+                <p>{'Genres: ' + foundMovie.genres}</p>
+                <p>{'Revenue: $' + foundMovie.revenue}</p>
                 <iframe
                     src={`https://www.youtube-nocookie.com/embed/${videoKey}`}
                     frameBorder="0"

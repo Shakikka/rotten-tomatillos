@@ -9,8 +9,6 @@ import { Droppable } from 'react-beautiful-dnd';
 
 const MovieContainer = ({enlargeCard, movies, currentMovie, currentVideos, favorites}) => {
 
-  // const wrapper = useRef(null)
-
   const buildMovieCards = (movies) => {
     return movies.map((movie, index) => {
       if (movie) {
@@ -54,8 +52,8 @@ const MovieContainer = ({enlargeCard, movies, currentMovie, currentVideos, favor
 
   const selectedMovie = (id) => {
     if (currentVideos.length) {
-      return <SelectedMovie id={currentMovie.id} foundMovie={currentMovie.film}
-       currentVideos={currentVideos} genres={currentMovie.genres} budget={currentMovie.budget} revenue={currentMovie.revenue}/>
+      return <SelectedMovie id={currentMovie.id} foundMovie={currentMovie}
+       currentVideos={currentVideos}/>
     } else if (/^\d+$/.test(id) && id.length === 6) {
       enlargeCard(id)
     } else {

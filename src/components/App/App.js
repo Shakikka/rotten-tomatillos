@@ -13,7 +13,7 @@ class App extends Component {
     this.state = {
       movies: [],
       favorites: [],
-      currentMovie: {active: false, id: null, film: {}, genres: '', budget: '', revenue: ''},
+      currentMovie: {active: false},
       currentVideos: [],
       error: '',
       rows: {
@@ -41,18 +41,26 @@ class App extends Component {
 
   goBack = () => {
     this.setState({
-      currentMovie: { active: false, id: null , film: {}} })
-  }
+      currentMovie: { active: false }
+  })
+}
 
   numberWithCommas = (x) => x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
   enlargeCard = (id) => {
       getMovie(id)
       .then(movie => {
-        this.setState({ currentMovie : {active: true, id: movie.movie.id, film: movie.movie, genres: movie.movie.genres.join(', '), budget: this.numberWithCommas(movie.movie.budget), revenue: this.numberWithCommas(movie.movie.revenue)}})
-        console.log(this.state.currentMovie)
-        // this.setState({ currentMovie: { film: { genres: this.state.currentMovie.film.genres.join(', ')}}})
-      })
+        const info = movie.movie
+        this.setState({ currentMovie: { active: true, average_rating: info.average_rating, 
+          backdrop_path: info.backdrop_path, 
+          budget: this.numberWithCommas(info.budget),
+          genres: info.genres.join(', '), id: info.id, 
+          overview: info.overview, 
+          poster_path: info.poster_path, 
+          release_date: info.release_date,  
+          revenue: this.numberWithCommas(info.revenue), 
+          runtime: info.runtime, tagline: info.tagline, 
+          title: info.title }})})
       .catch(error => this.setState({ error: `We cannot find this movie ${error.message}` }))
       getTrailer(id)
       .then(trailer => {
