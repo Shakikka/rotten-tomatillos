@@ -17,7 +17,7 @@ const SelectedMovie = ({ foundMovie, currentVideos }) => {
                     <IoIosArrowDropleft role="button" className="go-back"/>
                 </Link>
                 <h1 className="movie-title">{foundMovie.title}</h1>
-                <p>{'Runtime ' + foundMovie.runtime + 'minutes'}</p>
+                <p>{'Runtime: ' + foundMovie.runtime + ' minutes'}</p>
                 <i>{foundMovie.tagline}</i>
                 <h2>{'Overview: ' + foundMovie.overview}</h2>
                 <p>{'Average Rating: ' + parseFloat(foundMovie.average_rating).toFixed(1)}</p>

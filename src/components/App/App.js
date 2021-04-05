@@ -13,7 +13,7 @@ class App extends Component {
     this.state = {
       movies: [],
       favorites: [],
-      currentMovie: {active: false},
+      currentMovie: {},
       currentVideos: [],
       error: '',
       rows: {
@@ -38,12 +38,6 @@ class App extends Component {
       })
     .catch(error => this.setState({ error: `There is nothing here ${error.message}`}))
   }
-
-  goBack = () => {
-    this.setState({
-      currentMovie: { active: false }
-  })
-}
 
   numberWithCommas = (x) => x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
@@ -140,7 +134,7 @@ class App extends Component {
           <DragDropContext onDragEnd={this.onDragEnd}>
           {this.state.error && <h2>{this.state.error}</h2>}
           <MovieContainer movies={this.matchByIds(this.state.rows.newMovies.movieIds)} currentMovie={this.state.currentMovie}
-          enlargeCard={this.enlargeCard} goBack={this.goBack}
+          enlargeCard={this.enlargeCard}
           currentVideos={this.state.currentVideos} 
           favorites={this.matchByIds(this.state.rows.favorites.movieIds)}/>
       </DragDropContext>
