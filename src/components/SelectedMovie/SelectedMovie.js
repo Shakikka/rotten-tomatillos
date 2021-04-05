@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import  PropTypes from 'prop-types';
 
 
-const SelectedMovie = ({ genres, foundMovie, currentVideos }) => {
+const SelectedMovie = ({ genres, budget, revenue, foundMovie, currentVideos }) => {
     const style = {
         backgroundImage: `url(${foundMovie.backdrop_path})`
     }
@@ -21,9 +21,9 @@ const SelectedMovie = ({ genres, foundMovie, currentVideos }) => {
                 <h2>{'Overview: ' + foundMovie.overview}</h2>
                 <p>{'Average Rating: ' + parseFloat(foundMovie.average_rating).toFixed(1)}</p>
                 <p>{'Released: ' + foundMovie.release_date}</p>
-                <p>{'Budget: $' + foundMovie.budget}</p>
+                <p>{'Budget: $' + budget}</p>
                 <p>{'Genres: ' + genres}</p>
-                <p>{'Revenue: $' + foundMovie.revenue}</p>
+                <p>{'Revenue: $' + revenue}</p>
                 <iframe
                     src={`https://www.youtube-nocookie.com/embed/${videoKey}`}
                     frameBorder="0"

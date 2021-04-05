@@ -13,7 +13,7 @@ class App extends Component {
     this.state = {
       movies: [],
       favorites: [],
-      currentMovie: {active: false, id: null, film: {}, genres: ''},
+      currentMovie: {active: false, id: null, film: {}, genres: '', budget: '', revenue: ''},
       currentVideos: [],
       error: '',
       rows: {
@@ -25,8 +25,7 @@ class App extends Component {
           id: 'favorites',
           movieIds: [],
         }
-      },
-      rowOrder: ['newMovies', 'favorites']
+      }
     }
   }
 
@@ -45,9 +44,15 @@ class App extends Component {
       currentMovie: { active: false, id: null , film: {}} })
   }
 
+  numberWithCommas = (x) => x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+
   enlargeCard = (id) => {
       getMovie(id)
-      .then(movie => this.setState({ currentMovie : {active: true, id: movie.movie.id, film: movie.movie, genres: movie.movie.genres.join(', ')}}))
+      .then(movie => {
+        this.setState({ currentMovie : {active: true, id: movie.movie.id, film: movie.movie, genres: movie.movie.genres.join(', '), budget: this.numberWithCommas(movie.movie.budget), revenue: this.numberWithCommas(movie.movie.revenue)}})
+        console.log(this.state.currentMovie)
+        // this.setState({ currentMovie: { film: { genres: this.state.currentMovie.film.genres.join(', ')}}})
+      })
       .catch(error => this.setState({ error: `We cannot find this movie ${error.message}` }))
       getTrailer(id)
       .then(trailer => {
