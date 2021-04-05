@@ -1,6 +1,6 @@
 # Rotten Turtle Tales
 
-## Joel Thomas and Jackson McGuire
+## [Joel Thomas](https://github.com/Shakikka) and [Jackson McGuire](https://github.com/Jacksonmcguire)
 
 ### Learning Goals:
  * fundamentals of React
