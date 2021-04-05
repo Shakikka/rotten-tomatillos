@@ -69,14 +69,14 @@ const MovieContainer = ({enlargeCard, movies, currentMovie, currentVideos, favor
   
 
   const favoriteMovies = () => {
-    const favCards = buildMovieCards(favorites, true);
+    const favCards = favorites.length? buildMovieCards(favorites, true) : <p>Drag to me.</p>
     return (
     <Droppable
     droppableId="favorites"
     direction="horizontal"
     >
     {(provided) => <div
-    className="posters"
+    className="posters favorites"
     ref={provided.innerRef}
     {...provided.droppableProps}>
     {favCards}

@@ -3,10 +3,7 @@ import './App.css';
 import { getMovies, getMovie, getTrailer } from '../../apiCalls.js';
 import MovieContainer from '../Movies/Movies';
 import { DragDropContext } from 'react-beautiful-dnd'
-import { GiTortoise } from "react-icons/gi";
-import { GiAbstract091 } from 'react-icons/gi';
-import { GiFilmProjector } from 'react-icons/gi';
-import { GiCircleClaws } from 'react-icons/gi';
+import { GiTortoise, GiAbstract091, GiFilmProjector, GiCircleClaws } from "react-icons/gi";
 import "../../tortoise.svg"
 
 
@@ -128,11 +125,11 @@ class App extends Component {
           </div>
           </header>
           <DragDropContext onDragEnd={this.onDragEnd}>
+          {this.state.error && <h2>{this.state.error}</h2>}
           <MovieContainer movies={this.matchByIds(this.state.rows.newMovies.movieIds)} currentMovie={this.state.currentMovie}
           enlargeCard={this.enlargeCard} goBack={this.goBack}
           currentVideos={this.state.currentVideos} 
           favorites={this.matchByIds(this.state.rows.favorites.movieIds)}/>
-          {this.state.error.length && <h2>{this.state.error}</h2>}
       </DragDropContext>
         </div>
     );

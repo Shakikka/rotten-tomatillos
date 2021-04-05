@@ -11,7 +11,7 @@ const Movie = ({ id, poster_path, title, enlargeCard, average_rating, index, isF
           onClick={() => enlargeCard(id)}ref={provided.innerRef}
           {...provided.draggableProps}
           {...provided.dragHandleProps}>
-          <img src={poster_path} alt={`${title} poster`}></img>
+          <img className="poster-img" src={poster_path} alt={`${title} poster`}></img>
           <p>Rating: {average_rating.toFixed(1)}</p>
         </article>
           )}

@@ -1,5 +1,7 @@
 .movie-card {
   cursor: pointer;
+  display: flex;
+  flex-direction: column;
 }
 
 .movie-card > img {
@@ -7,6 +9,14 @@
   border-radius: 20px;
   margin: 10px;
 }
+.poster-img:hover {
+  transform: scale(.95);
+}
+
+.movie-card > p {
+  align-self: center;
+}
+
 
 a {
   text-decoration: none;
