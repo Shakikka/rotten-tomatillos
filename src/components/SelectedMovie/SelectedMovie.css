@@ -26,6 +26,7 @@ p, i, h2 {
   height: 800px;
   grid-area: 2 / 3 / 4 / 4;
   opacity: .7;
+  border-radius: 10px;
 }
 
 .movie-info {
