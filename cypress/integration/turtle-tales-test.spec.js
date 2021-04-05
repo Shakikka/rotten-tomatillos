@@ -56,7 +56,7 @@ describe('Paths for single movie and video network requests', () => {
                 statusCode: 404
             })
         cy.visit('http://localhost:3000/694919')
-        cy.get('h2').contains('cannot')
+        cy.get('h2').contains('404')
     });
 
     it( 'should show an error message when video trailer isn\'t available', () => {
@@ -65,7 +65,7 @@ describe('Paths for single movie and video network requests', () => {
                 statusCode: 404
             })
         cy.visit('http://localhost:3000/694919')
-        cy.get('h2').contains('can\'t')
+        cy.get('h2').contains('404')
     });
 
     it('should show single movie details and trailer for movie page', () => {
