@@ -13,7 +13,7 @@ class App extends Component {
     this.state = {
       movies: [],
       favorites: [],
-      currentMovie: {active: false, id: null, film: {}},
+      currentMovie: {active: false, id: null, film: {}, genres: ''},
       currentVideos: [],
       error: '',
       rows: {
@@ -47,7 +47,7 @@ class App extends Component {
 
   enlargeCard = (id) => {
       getMovie(id)
-      .then(movie => this.setState({ currentMovie : {active: true, id: (movie.movie.id), film: movie.movie}}))
+      .then(movie => this.setState({ currentMovie : {active: true, id: movie.movie.id, film: movie.movie, genres: movie.movie.genres.join(', ')}}))
       .catch(error => this.setState({ error: `We cannot find this movie ${error.message}` }))
       getTrailer(id)
       .then(trailer => {

@@ -55,7 +55,7 @@ const MovieContainer = ({enlargeCard, movies, currentMovie, currentVideos, favor
   const selectedMovie = (id) => {
     if (currentVideos.length) {
       return <SelectedMovie id={currentMovie.id} foundMovie={currentMovie.film}
-       currentVideos={currentVideos}/>
+       currentVideos={currentVideos} genres={currentMovie.genres}/>
     } else if (/^\d+$/.test(id) && id.length === 6) {
       enlargeCard(id)
     } else {

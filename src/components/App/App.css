@@ -13,7 +13,7 @@
 
 .flipped {
   margin-bottom: -15px;
-  transform: rotate(180deg);
+  transform: rotate(180deg) scaleX(-1);
 }
 
 .App {
