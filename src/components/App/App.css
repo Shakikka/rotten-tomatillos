@@ -68,8 +68,15 @@
   }
 }
 
-@media screen and (max-width: 550px) {
+@media screen and (max-width: 620px) {
   .App-header {
-    /* font-size: 5vh; */
+    font-size: 6vh;
+    text-align: center;
   }
+
+  .movie-logo {
+    display: none;
+  }
+
+  
 }
