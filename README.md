@@ -13,7 +13,7 @@
 #### Challenges:
 * Implementing testing for drag and drop functionality proved harder than expected and we were not able to fully test that logic with Cypress.
 
-### Overview of Site:
+## Overview of Site:
 ##### Rotten Turtle Tales is a web app that allows a user to:
   * Browse New movies in a gallery of movie posters
   * Drag their favorite movies from the New Movies section into the Favorites section
@@ -23,9 +23,9 @@
 
 ### Screenshots / Screen Recordings
 #### Movie Gallery Homepage:
-
+![](https://media.giphy.com/media/HzLcVvt2ylZgdEFDgc/giphy.gif)
 #### Selected Movie:
-
+![](https://media.giphy.com/media/jLsoLEiLhCaj1JUWDF/giphy.gif)
 ### Technologies Used:
 * Javacript
 * Webpack
@@ -33,8 +33,6 @@
 * [React Beautiful dnd](https://github.com/atlassian/react-beautiful-dnd)
 * [React Prop Types](https://www.npmjs.com/package/prop-types)
 * [Cypress](https://www.cypress.io/)
-
-### Systems/Practices
 
 ## Setup
 * To access the site on your local machine:
