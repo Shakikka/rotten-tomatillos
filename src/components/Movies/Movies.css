@@ -20,10 +20,9 @@
   margin-top: 0;
   margin-bottom: 2%;
   display: flex;
-  /* grid-template: 1fr / repeat(50%); */
   overflow-x: scroll;
-  min-height: 320px;
-  background: #22223B;
+  /* min-height: 320px; */
+  /* background: #22223B; */
   border-radius: 10px;
 }
 

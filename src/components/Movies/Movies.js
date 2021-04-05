@@ -9,8 +9,6 @@ import { Droppable } from 'react-beautiful-dnd';
 
 const MovieContainer = ({enlargeCard, movies, currentMovie, currentVideos, favorites, error}) => {
 
-  // const wrapper = useRef(null)
-
   const buildMovieCards = (movies) => {
     return movies.map((movie, index) => {
       if (movie) {
@@ -54,12 +52,12 @@ const MovieContainer = ({enlargeCard, movies, currentMovie, currentVideos, favor
 
   const selectedMovie = (id) => {
     if (currentMovie.id) {
-      return <SelectedMovie id={currentMovie.id} foundMovie={currentMovie.film}
+      return <SelectedMovie id={currentMovie.id} foundMovie={currentMovie}
        currentVideos={currentVideos}/>
     } else if (checkID(id)) {
       enlargeCard(id)
     } else {
-      return <Link to='/'><h2> 404: You must be lost. Please try again</h2></Link>
+      return <Link to='/'><h2> 404: You must be lost. Please click me</h2></Link>
     }
   }
 
@@ -98,7 +96,7 @@ const MovieContainer = ({enlargeCard, movies, currentMovie, currentVideos, favor
         <Switch location={location} key={location.pathname}>
           <Route exact path='/' children={() => <section className="movie-container">New Movies{movieCards}Favorites{favoriteMovies()}</section>}/>
           <Route exact path="/:id" children={() => <section className="movie-container">{selectedMovie(location.pathname.split('/')[1])}</section>}/>
-          <Route render={()=> <Link to='/'><h2> 404: You must be lost. Please try again</h2></Link>}/>
+          <Route render={()=> <Link to='/'><h2> 404: You must be lost. Please click me</h2></Link>}/>
         </Switch>
       )}>
     </Route>
@@ -112,6 +110,5 @@ MovieContainer.propTypes = {
   enlargeCard: PropTypes.func,
   movies: PropTypes.array,
   currentMovie: PropTypes.object,
-  goBack: PropTypes.func,
   currentVideos: PropTypes.array
 };

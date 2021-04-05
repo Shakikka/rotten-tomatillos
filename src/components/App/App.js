@@ -14,7 +14,7 @@ class App extends Component {
     this.state = {
       movies: [],
       favorites: [],
-      currentMovie: {active: false, id: null, film: {}},
+      currentMovie: {},
       currentVideos: [],
       error: '',
       rows: {
@@ -26,7 +26,7 @@ class App extends Component {
           id: 'favorites',
           movieIds: [],
         }
-      },
+      }
     }
   }
 
@@ -40,24 +40,35 @@ class App extends Component {
     .catch(error => this.setState({ error: `There is nothing here ${error.message}`}))
   }
 
-  goBack = () => {
-    this.setState({
-      currentMovie: { active: false, id: null , film: {}} })
-  }
+  numberWithCommas = (x) => x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
   enlargeCard = (id) => {
-    this.getVideos(id)
-    this.getMovie(id)  
+      this.getMovie(id)
+      this.getVideos(id)
   }
 
   getMovie = (id) => {
     getMovie(id)
       .then(movie => {
-        return this.setState({ currentMovie : {active: true, id: (movie.movie.id), film: movie.movie}})
+        const info = movie.movie
+        this.setState({
+          currentMovie: {
+            active: true, average_rating: info.average_rating,
+            backdrop_path: info.backdrop_path,
+            budget: this.numberWithCommas(info.budget),
+            genres: info.genres.join(', '), id: info.id,
+            overview: info.overview,
+            poster_path: info.poster_path,
+            release_date: info.release_date,
+            revenue: this.numberWithCommas(info.revenue),
+            runtime: info.runtime, tagline: info.tagline,
+            title: info.title
+          }
+        })
       })
       .catch(error => this.setState({ error: `We cannot find this movie ${error.message}` }))
-    
   }
+
 
   getVideos = (id) => {
     getTrailer(id)
@@ -101,7 +112,7 @@ class App extends Component {
           {this.state.error.includes('nothing') && <h2>{this.state.error}</h2>}
           <DragDropContext onDragEnd={this.onDragEnd}>
           <MovieContainer movies={this.matchByIds(this.state.rows.newMovies.movieIds)} currentMovie={this.state.currentMovie}
-          enlargeCard={this.enlargeCard} goBack={this.goBack}
+          enlargeCard={this.enlargeCard}
           currentVideos={this.state.currentVideos} 
           favorites={this.matchByIds(this.state.rows.favorites.movieIds)} error={this.state.error}/>
       </DragDropContext>
