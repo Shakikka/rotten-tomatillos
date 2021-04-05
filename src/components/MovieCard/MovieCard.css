@@ -9,6 +9,9 @@
   border-radius: 20px;
   margin: 10px;
 }
+.poster-img:hover {
+  transform: scale(.95);
+}
 
 .movie-card > p {
   align-self: center;
