@@ -18,13 +18,12 @@ const SelectedMovie = ({ foundMovie, currentVideos }) => {
                 </Link>
                 <h1 className="movie-title">{foundMovie.title}</h1>
                 <i>{foundMovie.tagline}</i>
-                {/* <p>{'Runtime: ' + foundMovie.runtime + ' minutes'}</p> */}
-                <h2>{'Overview: ' + foundMovie.overview}</h2>
                 <p>{'Average Rating: ' + parseFloat(foundMovie.average_rating).toFixed(1)}</p>
-                <p>{'Released: ' + foundMovie.release_date}</p>
-                <p>{'Budget: $' + foundMovie.budget}</p>
+                <p>{'Runtime: ' + foundMovie.runtime + ' minutes'}</p>
                 <p>{'Genres: ' + foundMovie.genres}</p>
-                <p>{'Revenue: $' + foundMovie.revenue}</p>
+                <h2>{'Overview: ' + foundMovie.overview}</h2>
+                <p>{'Released: ' + foundMovie.release_date}</p>
+                <p>{`Budget: $${foundMovie.budget} /      Revenue: $${foundMovie.revenue}`}</p>
                 <iframe
                     src={`https://www.youtube-nocookie.com/embed/${videoKey}`}
                     frameBorder="0"
