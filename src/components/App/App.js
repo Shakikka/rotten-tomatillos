@@ -43,22 +43,32 @@ class App extends Component {
   numberWithCommas = (x) => x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
   enlargeCard = (id) => {
-      getMovie(id)
+      this.getMovie(id)
+      this.getVideos(id)
+  }
+
+  getMovie = (id) => {
+    getMovie(id)
       .then(movie => {
         const info = movie.movie
-        this.setState({ currentMovie: { active: true, average_rating: info.average_rating, 
-          backdrop_path: info.backdrop_path, 
-          budget: this.numberWithCommas(info.budget),
-          genres: info.genres.join(', '), id: info.id, 
-          overview: info.overview, 
-          poster_path: info.poster_path, 
-          release_date: info.release_date,  
-          revenue: this.numberWithCommas(info.revenue), 
-          runtime: info.runtime, tagline: info.tagline, 
-          title: info.title }})})
+        this.setState({
+          currentMovie: {
+            active: true, average_rating: info.average_rating,
+            backdrop_path: info.backdrop_path,
+            budget: this.numberWithCommas(info.budget),
+            genres: info.genres.join(', '), id: info.id,
+            overview: info.overview,
+            poster_path: info.poster_path,
+            release_date: info.release_date,
+            revenue: this.numberWithCommas(info.revenue),
+            runtime: info.runtime, tagline: info.tagline,
+            title: info.title
+          }
+        })
+      })
       .catch(error => this.setState({ error: `We cannot find this movie ${error.message}` }))
-    
   }
+
 
   getVideos = (id) => {
     getTrailer(id)
