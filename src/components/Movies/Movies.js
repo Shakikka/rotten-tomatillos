@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 import { Droppable } from 'react-beautiful-dnd';
 
 
-const MovieContainer = ({enlargeCard, movies, currentMovie, currentVideos, favorites}) => {
+const MovieContainer = ({enlargeCard, movies, currentMovie, currentVideos, favorites, error}) => {
 
   const buildMovieCards = (movies) => {
     return movies.map((movie, index) => {
@@ -51,19 +51,25 @@ const MovieContainer = ({enlargeCard, movies, currentMovie, currentVideos, favor
   )
 
   const selectedMovie = (id) => {
-    if (currentVideos.length) {
+    if (currentMovie.id) {
       return <SelectedMovie id={currentMovie.id} foundMovie={currentMovie}
        currentVideos={currentVideos}/>
-    } else if (/^\d+$/.test(id) && id.length === 6) {
+    } else if (checkID(id)) {
       enlargeCard(id)
     } else {
       return <Link to='/'><h2> 404: You must be lost. Please click me</h2></Link>
     }
   }
 
-  // const checkID = (id) => {
-  //   return movies.find(movie => movie.id === id)
-  // }
+  const checkID = (id) => {
+    if (/^\d+$/.test(id) && id.length === 6 &&
+    !error) {
+      return true
+    } else {
+      console.log(error)
+      return false
+    } 
+  }
   
 
   const favoriteMovies = () => {
