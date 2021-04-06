@@ -24,6 +24,7 @@
   /* min-height: 320px; */
   /* background: #22223B; */
   border-radius: 10px;
+  cursor: pointer;
 }
 
 .posters > p {

@@ -80,3 +80,9 @@
 
   
 }
+
+@media screen and (max-width: 450px) {
+  .App-header{
+    font-size: 5vh;
+  }
+}
