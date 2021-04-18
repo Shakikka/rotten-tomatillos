@@ -111,11 +111,11 @@ class App extends Component {
           </header>
           {this.state.error.includes('nothing') && <h2>{this.state.error}</h2>}
           <DragDropContext onDragEnd={this.onDragEnd}>
-          <MovieContainer movies={this.matchByIds(this.state.rows.newMovies.movieIds)} currentMovie={this.state.currentMovie}
-          enlargeCard={this.enlargeCard}
-          currentVideos={this.state.currentVideos} 
-          favorites={this.matchByIds(this.state.rows.favorites.movieIds)} error={this.state.error}/>
-      </DragDropContext>
+            <MovieContainer movies={this.matchByIds(this.state.rows.newMovies.movieIds)} currentMovie={this.state.currentMovie}
+            enlargeCard={this.enlargeCard}
+            currentVideos={this.state.currentVideos} 
+            favorites={this.matchByIds(this.state.rows.favorites.movieIds)} error={this.state.error}/>
+          </DragDropContext>
         </div>
     );
   }
