@@ -25,9 +25,9 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "run cypress:open",
+    "test": "ci",
     "eject": "react-scripts eject",
-    "cypress:open": "cypress open"
+    "ci": "cypress open"
   },
   "eslintConfig": {
     "extends": [
