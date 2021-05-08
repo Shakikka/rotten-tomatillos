@@ -25,9 +25,9 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "ci",
+    "test": "start-server-and-test start http://localhost:3000 co",
     "eject": "react-scripts eject",
-    "ci": "cypress open"
+    "co": "cypress run"
   },
   "eslintConfig": {
     "extends": [
@@ -49,6 +49,7 @@
   },
   "devDependencies": {
     "@4tw/cypress-drag-drop": "^1.6.0",
-    "cypress": "^6.8.0"
+    "cypress": "^6.8.0",
+    "start-server-and-test": "^1.12.1"
   }
 }
