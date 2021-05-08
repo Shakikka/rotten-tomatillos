@@ -15,7 +15,9 @@
     "react-icons": "^4.2.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
+    "ruby": "^0.6.1",
     "serve": "^11.3.2",
+    "travis-ci": "^2.2.0",
     "web-vitals": "^1.1.1"
   },
   "engines": {
