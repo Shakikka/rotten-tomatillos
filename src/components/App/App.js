@@ -44,13 +44,13 @@ class App extends Component {
 
   enlargeCard = (id) => {
       this.getMovie(id)
-      this.getVideos(id)
   }
 
   getMovie = (id) => {
-    getMovie(id)
-      .then(movie => {
-        const info = movie.movie
+    Promise.all([getMovie(id), getTrailer(id)])
+      .then(results => {
+        const info = results[0].movie
+        const trailer = results[1].videos
         this.setState({
           currentMovie: {
             active: true, average_rating: info.average_rating,
@@ -63,20 +63,12 @@ class App extends Component {
             revenue: this.numberWithCommas(info.revenue),
             runtime: info.runtime, tagline: info.tagline,
             title: info.title
-          }
+          },
+          currentVideos: trailer
         })
       })
       .catch(error => this.setState({ error: `We cannot find this movie ${error.message}` }))
   }
-
-
-  getVideos = (id) => {
-    getTrailer(id)
-      .then(trailer => {
-        return this.setState({ currentVideos : trailer.videos})
-      })
-      .catch(error => this.setState({ error: `We can't find your trailer ${error.message}` }))
-}
 
   onDragEnd = (result) => {
     const { destination, source, draggableId } = result;
@@ -111,11 +103,11 @@ class App extends Component {
           </header>
           {this.state.error.includes('nothing') && <h2>{this.state.error}</h2>}
           <DragDropContext onDragEnd={this.onDragEnd}>
-          <MovieContainer movies={this.matchByIds(this.state.rows.newMovies.movieIds)} currentMovie={this.state.currentMovie}
-          enlargeCard={this.enlargeCard}
-          currentVideos={this.state.currentVideos} 
-          favorites={this.matchByIds(this.state.rows.favorites.movieIds)} error={this.state.error}/>
-      </DragDropContext>
+            <MovieContainer movies={this.matchByIds(this.state.rows.newMovies.movieIds)} currentMovie={this.state.currentMovie}
+            enlargeCard={this.enlargeCard}
+            currentVideos={this.state.currentVideos} 
+            favorites={this.matchByIds(this.state.rows.favorites.movieIds)} error={this.state.error}/>
+          </DragDropContext>
         </div>
     );
   }

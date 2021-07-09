@@ -11,7 +11,6 @@ const MovieContainer = ({enlargeCard, movies, currentMovie, currentVideos, favor
 
   const buildMovieCards = (movies) => {
     return movies.map((movie, index) => {
-      if (movie) {
         return (
       
             <Link to={`/${movie.id}`} key={movie.id}>
@@ -26,8 +25,7 @@ const MovieContainer = ({enlargeCard, movies, currentMovie, currentVideos, favor
                 index={index}
               />
         </Link>
-            )
-          }        
+            )  
         })
     }
 
